@@ -1,7 +1,4 @@
-
-
 /* Reset CSS */
-
 *{
     margin: 0;
     padding: 0;
@@ -10,7 +7,6 @@
 }
 
 /* Body CSS */
-
 body{
     font-family: 'Roboto', sans-serif;
     background-color: #131842;
@@ -19,7 +15,6 @@ body{
 }
 
 /* Header CSS */
-
 header{
     display: flex;
     justify-content: space-between;
@@ -29,7 +24,7 @@ header{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Ajustar el logo (h1) */
+/* Logo and nav */
 header a{
     text-decoration: none;
     color: #FBF6E2;
@@ -37,16 +32,13 @@ header a{
 header h1 {
     color: #FBF6E2;
 }
-
 header nav ul{
     display: flex;
     list-style: none;
 }
-
 header nav ul li{
     margin-right: 20px;
 }
-
 header nav ul li a{
     text-decoration: none;
     color: #ECCEAE;
@@ -57,7 +49,6 @@ header nav ul li a{
 header .menu-btn {
     display: none;
 }
-
 header img {
     display: none;
     width: 50px;
@@ -73,7 +64,7 @@ header img {
     margin: 0 auto;
 }
 
-/* About Me CSS */
+/* About Me Principal */
 .main_principal-aboutme{
     display: flex;
     justify-content: space-between;
@@ -90,13 +81,13 @@ header img {
     margin-bottom: 20px;
 }
 
-
+/* About me / About me Page */
 .box_aboutme2{
     width: 50%;
     text-align: center;
 }
 .box_aboutme2 h2{
-    font-size: 3.125rem;
+    font-size: 2.5rem;
     margin-bottom: 20px;
 }
 .aboutme2__text{
@@ -132,7 +123,7 @@ header img {
     margin-bottom: 3.125rem;
 }
 .box_aboutme2__skills h2{
-    font-size: 3.125rem;
+    font-size: 2.5rem;
     margin-bottom: 20px;
 }
 .box_aboutme2__skills ul{
@@ -154,7 +145,6 @@ header img {
     transition: 0.5s;
 }
 
-
 /* Social Media */
 .box_aboutme2__socialMedia{
     display: flex;
@@ -163,7 +153,7 @@ header img {
     margin-bottom: 20px;
 }
 .title_socialMedia{
-    font-size: 3.125rem;
+    font-size: 2.5rem;
     margin-bottom: 20px;
 }
 .link__socialMedia{
@@ -195,23 +185,21 @@ header img {
 }
 
 /* Intro CSS */
-
 #intro{
     padding: 50px 0;
 }
 
 #intro h2{
-    font-size: 50px;
     margin: 20px 0;
 }
 
 #intro h2 a{
     color: #E68369;
     text-decoration: none;
+    font-size: 2.5rem;
 }
 #intro p{
     font-size: 20px;
-    margin-bottom: 20px;
     font-family: "Roboto", sans-serif;
 }
 
@@ -223,86 +211,108 @@ header img {
 .programming_box h2 a{
     color: #E68369;
     text-decoration: none;
-    font-size: 50px;
+    font-size: 2.5rem;
 }
-
 .programming_box h2{
     margin: 20px 0;
 }
-
 .projects__programming_box{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-
 }
 .project{
+    display: flex;
+    flex-direction: column; /* Organiza los elementos verticalmente */
+    justify-content: space-between; /* Espacio entre el contenido y los enlaces */
+    height: 100%; /* Asegúrate de que los proyectos ocupen el espacio completo */
     padding: 20px;
-    background-color: #E68369;
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    background-color: #E68369;
 }
 .title_project{
     font-size: 30px;
     margin-bottom: 20px;
+    margin: 1.25rem 0;
 }
 .description_project{
     font-size: 20px;
     margin-bottom: 20px;
 }
-.project img{
-    width: 100%;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    background-color: black;
-}
-.project img:hover{
-    transform: scale(1.1);
-    transition: 0.5s;
-}
-.show_project{
-    text-align: center;
-}
-.show_project a{
-    display: inline-block;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 20px;
-}
-
-/* Test inicio*/
 .toggle-checkbox {
     display: none; /* Ocultar el checkbox */
 }
-
 .more-text {
     display: none; /* Ocultar el texto adicional por defecto */
 }
-
 .toggle-checkbox:checked + .toggle-label + .more-text {
     display: block; /* Mostrar el texto adicional cuando el checkbox está marcado */
+    margin: 1.25rem 0;
+    font-size: 1.2rem;
 }
-
 .toggle-label {
     cursor: pointer;
     color: #131842;
     text-decoration: underline;
-    margin: 0 10px 30px 0;
+    margin: 0 10px 10px 0;
     display: inline-block;
     font-size: 15px;
 }
+.image_container--Project{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 0 auto;
+    margin-bottom: 1.2rem;
+    margin-top: 1.2rem;
+}
+.image_container--Project img{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra la imagen */
+    transition: transform 0.3s ease; /* Para que se vea el efecto de hover */
+    background-color: black;
+}
+.image_container--Project img:hover{
+    transform: translate(-50%, -50%) 
+    scale(1.1); /* Efecto hover para agrandar la imagen */
+}
+.show_project{
+    margin-top: auto; /* Empuja los enlaces hacia abajo */
+    display: flex;
+    gap: 10px; /* Espacio entre los enlaces */
+    justify-content: center; /* Centra los enlaces */
+    margin-bottom: 1.25rem;
+    margin-top: 1.25rem;
+}
+.show_project a{
+    text-decoration: none;
+    color: #fff;
+    background-color: #131842;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.show_project a:hover {
+    background-color: #0056b3;
+}
 
-/* Test Final */
+/* Programming languages */
 
 .programming_languages__box{
     padding: 50px 0;
 }
 .programming_languages__box h3{
     color: #E68369;
-    font-size: 50px;
+    font-size: 2.5rem;
     margin: 20px 0;
-}
-    
+}    
 .languages_box{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -310,7 +320,6 @@ header img {
     width: 70%;
     margin: 0 auto;
 }
-
 .language{
     display: flex;
     justify-content: center;
@@ -320,14 +329,25 @@ header img {
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
+.language img{
+    width: 110px;
+    height: 110px;
+    border-radius: 10%;
+    margin: 10px;
+    cursor: pointer;
+}
+.language img:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+}
 
-
+/* Story Principal CSS */
 .writing_box{
     padding: 50px 0;
 }
 .writing_box h2 a{
     color: #E68369;
-    font-size: 50px;
+    font-size: 2.5rem;
     text-decoration: none;
 }
 .writing_box h2{
@@ -360,7 +380,9 @@ hr{
     text-decoration: none;
     font-size: 1.25rem   ;
 }
-
+.storyPrincipal__writing_box a:hover{
+    text-decoration: underline;
+}
 
 /* Aside CSS */
 aside {
@@ -375,7 +397,6 @@ form {
     text-align: center;
     width: 60%;
 }
-
 .input-group{
     display: flex;
     flex-direction: column;
@@ -391,6 +412,10 @@ form {
     border: 2px solid #E68369;
     border-radius: 20px;
     outline: none;
+    font-size: 1.1rem;
+}
+.input-group input:hover{
+    background-color: #e69783;
 }
 .input-group textarea{
     padding: 10px;
@@ -400,20 +425,17 @@ form {
     outline: none;
     font-family: "Roboto", sans-serif;
 }
-
 form h2{
     color: #E68369;
-    font-size: 50px;
+    font-size: 2.5rem;
     margin-bottom: 20px;
 }
-
 form label{
     color: #FBF6E2;
     font-size: 15px;
     font-weight: 600;
     margin-bottom: 15px;
 }
-
 form input, form textarea{
     padding: 17px 25px;
     margin-bottom: 25px;
@@ -423,7 +445,6 @@ form input, form textarea{
     color: #283629;
     outline: none;
 }
-
 .form-txt{
     margin-bottom: 30px;
     font-size: 15px;
@@ -442,7 +463,6 @@ form input, form textarea{
 .form-txt a:visited{
     color: #E68369;
 }
-
 .btn{
     padding: 15px 25px;
     border: none;
@@ -455,7 +475,6 @@ form input, form textarea{
 }
 
 /* Footer CSS */
-
 footer{
     display: flex;
     justify-content: center;
@@ -466,10 +485,9 @@ footer{
 }
 
 /* Media Queries */
-
 @media (max-width: 1020px) {
-    /* Mostrar el botón de menú */
 
+    /* Mostrar el botón de menú */
     button.menu-btn{
         display: flex;
         background: none;
@@ -492,15 +510,12 @@ footer{
         justify-content: space-between;
         padding: 20px 50px;
     }
-
     header h1{
         margin: 0 20px;
     }
-
     header nav ul li a {
-        font-size: 16px;
+        font-size: 1.125rem;
     }
-
     header nav ul {
         display: none;
         flex-direction: column;
@@ -512,25 +527,21 @@ footer{
         padding: 20px;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     }
-
     header nav ul li {
         margin: 10px 0;
         text-align: center;
     }
-
     header nav ul.show-menu {
         display: flex; /* Muestra el menú cuando se abre */
     }
 
-    /* Configuración de la página About Me */
-
+    /* About Me Configuration*/
     .main_principal-aboutme{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-
     .box_aboutme1{
         width: 100%;
         text-align: center;
@@ -544,7 +555,7 @@ footer{
         width: 100%;
         text-align: center;
     }
-    .box_aboutme2 h1{
+    .box_aboutme2 h2{
         font-size: 2.5rem;
         margin-bottom: 20px;
     }
@@ -598,62 +609,87 @@ footer{
         color: #FBF6E2;
     }
     
-    /* Fin de configuración de la página About Me */
-    
-
+    /* Intro */
     #intro h2 {
-        font-size: 40px;
+        font-size: 2.5rem;
     }
 
+    /* Projects and Languages */
     .programming_box h2 {
         font-size: 40px;
     }
-
-    .title_project, .description_project {
-        font-size: 20px;
+    .title_project{
+        font-size: 1.3rem;
+    } 
+    .description_project {
+        font-size: 1.2rem;
     }
-
+    .image_container--Project{
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+        margin-bottom: 1.2rem;
+        margin-top: 1.2rem;
+    }
+    .image_container--Project img{
+        width: 300px;
+        height: 300px;
+    }
+    .show_project{
+        margin: 1.25rem 0;
+    }
     .storyPrincipal__writing_box {
         width: 90%;
     }
-
     .programming_languages__box h3 {
         font-size: 40px;
     }
-
     .languages_box {
         grid-template-columns: 1fr; /* Single column for smaller screens */
     }
-
+    .language {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        width: 10rem;
+        margin: 0 auto;
+        background-color: #E68369;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
     .projects__programming_box {
         grid-template-columns: 1fr; /* Single column for smaller screens */
     }
 
+    /* Form CSS */
     form {
-        width: 90%;
+        width: 100%;
         padding: 30px;
     }
-
+    .form_aboutMe{
+        width: 60%;
+        padding: 20px;
+    }
+    .input-group input{
+        font-size: 1.1rem;
+    }
     form h2 {
         font-size: 40px;
     }
-
     form input, form textarea {
         padding: 15px;
         margin-bottom: 20px;
     }
-
     .btn {
         padding: 12px 20px;
         font-size: 14px;
     }
 
-
 /* Further adjustments for mobile screens */
 @media (max-width: 768px) {
 
-    /* Mostrar el botón de menú */
-
+    /* Show Menu Button */
     button.menu-btn{
         display: flex;
         background: none;
@@ -662,6 +698,8 @@ footer{
         width: 50%;
         justify-content: right;
     }
+
+    /* Header */
     header img {
         display: block;
         margin: 0 30px;
@@ -676,15 +714,12 @@ footer{
         justify-content: space-between;
         padding: 20px 50px;
     }
-
     header h1{
         margin: 0 20px;
     }
-
     header nav ul li a {
-        font-size: 16px;
+        font-size: 1.125rem;
     }
-
     header nav ul {
         display: none;
         flex-direction: column;
@@ -696,37 +731,31 @@ footer{
         padding: 20px;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     }
-
     header nav ul li {
         margin: 10px 0;
         text-align: center;
     }
-
     header nav ul.show-menu {
         display: flex; /* Muestra el menú cuando se abre */
     }
 
-    /* Configuración de la página About Me */
-
+    /* About Me */
     .main_principal-aboutme{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-
     .box_aboutme1{
         width: 100%;
         text-align: center;
     }
-
     .box_aboutme1 img{
         width: 90%;
         border-radius: 20px;
         margin-bottom: 20px;
         height: 400px;
     }
-
     .box_aboutme2{
         width: 100%;
         text-align: center;
@@ -739,12 +768,14 @@ footer{
         font-size: 20px;
         margin-bottom: 20px;
     }
+
+    /* Social Media */
     .link__socialMedia{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         padding: 1.5rem;
-        width: 70%;
+        width: 50%;
         margin: 0 auto;
     }
     .socialMedia img{
@@ -754,45 +785,63 @@ footer{
         margin: 10px;
         cursor: pointer;
     }
-
     
-    /* Fin de configuración de la página About Me */
-
-
+    /* Intro */
     #intro h2 {
-        font-size: 40px;
+        font-size: 2.5rem;
     }
 
+    /* Projects and Languages */
     .programming_box h2 {
-        font-size: 40px;
+        font-size: 2.5rem;
     }
-
-    .title_project, .description_project {
-        font-size: 20px;
+    .title_project{
+        font-size: 1.3rem;
     }
-
+    .description_project {
+        font-size: 1.2rem;
+    }
+    .image_container--Project{
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        margin-bottom: 1.2rem;
+        margin-top: 1.2rem;
+    }
+    .image_container--Project img{
+        width: 200px;
+        height: 200px;
+    }
+    .show_project{
+        margin: 1.25rem 0;
+    }
     .storyPrincipal__writing_box {
         width: 90%;
     }
 
     .programming_languages__box h3 {
-        font-size: 40px;
+        font-size: 2.5rem;
     }
 
+    /* Footer CSS */
     form {
-        width: 90%;
+        width: 100%;
         padding: 30px;
     }
-
+    .form_aboutMe{
+        width: 60%;
+        padding: 20px;
+    }
     form h2 {
         font-size: 40px;
     }
-
     form input, form textarea {
         padding: 15px;
         margin-bottom: 20px;
     }
-
+    .input-group input{
+        font-size: 1.1rem;
+    }
     .btn {
         padding: 12px 20px;
         font-size: 14px;
@@ -802,22 +851,7 @@ footer{
 
 /* Further adjustments for mobile screens */
 @media screen and (max-width: 630px) {
-    /* Mostrar el botón de menú */
-    header img {
-        display: block;
-        margin: 0 30px;
-        text-align: right;
-        background: none;
-        border: none;
-        text-align: center;
-    }
-    
-    header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 20px 50px;
-    }
+    /* Show Menu Button */
     button.menu-btn{
         display: flex;
         background: none;
@@ -826,25 +860,42 @@ footer{
         width: 50%;
         justify-content: right;
     }
+
+    /* Header */
+    header img {
+        display: block;
+        margin: 0 30px;
+        text-align: right;
+        background: none;
+        border: none;
+        text-align: center;
+    }
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px 50px;
+    }
     header nav ul.show-menu {
         display: flex; /* Muestra el menú cuando se abre */
         margin-top: 40px;
     }
 }
+
 /* Extra small devices (phones, less than 480px) */
 @media (max-width: 480px) {
+
+    /* Header */
     header {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 20px 50px;
+        padding: 20px 30px;
     }
-
     header nav ul li a {
-        font-size: 14px;
+        font-size: 1.125rem;
     }
-
     header nav ul {
         display: none;
         flex-direction: column;
@@ -857,6 +908,7 @@ footer{
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     }
 
+    /* About Me */
     .box_aboutme1 img {
         width: 80%;
         border-radius: 20px;
@@ -864,44 +916,86 @@ footer{
         height: 300px;
     }
 
+    /* Main content */
     .box-content {
         width: 80%;
     }
 
+    /* Intro */
     #intro h2 {
         font-size: 30px;
     }
 
+    /* Projects and Languages */
     .programming_box h2 {
         font-size: 30px;
     }
-
-    .title_project, .description_project {
-        font-size: 18px;
+    .image_container--Project{
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        margin-bottom: 1.2rem;
+        margin-top: 1.2rem;
     }
-
+    .image_container--Project img{
+        width: 200px;
+        height: 200px;
+    }
+    .title_project{
+        font-size: 1.3rem;
+    }
+    .description_project {
+        font-size: 1.2rem;
+    }
+    .show_project{
+        margin: 1.25rem 0;
+    }
     .projects__programming_box {
         grid-template-columns: 1fr; /* Single column for smaller screens */
+        justify-content: center;
     }
-
     .languages_box {
         grid-template-columns: 1fr; /* Single column for smaller screens */
     }
+    .languages_box .language{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        width: 10rem;
+        margin: 0 auto;
+        background-color: #E68369;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    .languages_box img{
+        width: 70px;
+        height: 70px;
+        border-radius: 10%;
+        margin: 10px;
+        cursor: pointer;
+    }
 
+    /* Form contact*/
     form {
+        width: 100%;
+        padding: 20px;
+    }
+    .form_aboutMe{
         width: 80%;
         padding: 20px;
     }
-
     form h2 {
         font-size: 30px;
     }
-
     form input, form textarea {
         padding: 10px;
         margin-bottom: 15px;
     }
-
+    .input-group input {
+        padding: 10px 15px;
+        font-size: 1.1rem;
+    }
     .btn {
         padding: 10px 15px;
         font-size: 12px;
