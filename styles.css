@@ -1,0 +1,910 @@
+
+
+/* Reset CSS */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #FBF6E2;
+}
+
+/* Body CSS */
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #131842;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Header CSS */
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #E68369;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ajustar el logo (h1) */
+header a{
+    text-decoration: none;
+    color: #FBF6E2;
+}
+header h1 {
+    color: #FBF6E2;
+}
+
+header nav ul{
+    display: flex;
+    list-style: none;
+}
+
+header nav ul li{
+    margin-right: 20px;
+}
+
+header nav ul li a{
+    text-decoration: none;
+    color: #ECCEAE;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+}
+header .menu-btn {
+    display: none;
+}
+
+header img {
+    display: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 10%;
+    cursor: pointer;
+}
+
+/* Principal CSS */
+
+.box-content{
+    width: 60%;
+    margin: 0 auto;
+}
+
+/* About Me CSS */
+.main_principal-aboutme{
+    display: flex;
+    justify-content: space-between;
+    padding: 4.375rem 0;
+    gap: 30px;
+}
+.box_aboutme1{
+    width: 50%;
+    text-align: center;
+}
+.box_aboutme1 img{
+    width: 90%;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+
+.box_aboutme2{
+    width: 50%;
+    text-align: center;
+}
+.box_aboutme2 h2{
+    font-size: 3.125rem;
+    margin-bottom: 20px;
+}
+.aboutme2__text{
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.box_aboutme2__email{
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.box_aboutme2__email a{
+    color: #E68369;
+    text-decoration: none;
+}
+.box_aboutme2__email a:hover{
+    text-decoration: underline;
+}
+.box_aboutme2__country{
+    font-size: 20px;
+    margin-bottom: 2.6rem;
+    text-align: left;
+}
+.box_aboutme2__country span{
+    color: #E68369;
+}
+
+/* Skills CSS */
+.box_aboutme2__skills{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 3.125rem;
+}
+.box_aboutme2__skills h2{
+    font-size: 3.125rem;
+    margin-bottom: 20px;
+}
+.box_aboutme2__skills ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.box_aboutme2__skills ul li{
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #E68369;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+    list-style: none;
+}
+.box_aboutme2__skills ul li:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+
+/* Social Media */
+.box_aboutme2__socialMedia{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.title_socialMedia{
+    font-size: 3.125rem;
+    margin-bottom: 20px;
+}
+.link__socialMedia{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #E68369;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    font-size: 20px;
+    text-decoration: none;
+    color: #FBF6E2;
+}
+.link__socialMedia:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+.socialMedia{
+    margin: 10px;
+}
+.socialMedia img{
+    width: 50px;
+    height: 50px;
+    border-radius: 10%;
+    margin: 10px;
+    cursor: pointer;
+}
+
+/* Intro CSS */
+
+#intro{
+    padding: 50px 0;
+}
+
+#intro h2{
+    font-size: 50px;
+    margin: 20px 0;
+}
+
+#intro h2 a{
+    color: #E68369;
+    text-decoration: none;
+}
+#intro p{
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-family: "Roboto", sans-serif;
+}
+
+/* Programming box CSS */
+.programming_box{
+    padding: 50px 0;
+    font-family: "Roboto", sans-serif;
+}
+.programming_box h2 a{
+    color: #E68369;
+    text-decoration: none;
+    font-size: 50px;
+}
+
+.programming_box h2{
+    margin: 20px 0;
+}
+
+.projects__programming_box{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+}
+.project{
+    padding: 20px;
+    background-color: #E68369;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.title_project{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.description_project{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.project img{
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    background-color: black;
+}
+.project img:hover{
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+.show_project{
+    text-align: center;
+}
+.show_project a{
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/* Test inicio*/
+.toggle-checkbox {
+    display: none; /* Ocultar el checkbox */
+}
+
+.more-text {
+    display: none; /* Ocultar el texto adicional por defecto */
+}
+
+.toggle-checkbox:checked + .toggle-label + .more-text {
+    display: block; /* Mostrar el texto adicional cuando el checkbox está marcado */
+}
+
+.toggle-label {
+    cursor: pointer;
+    color: #131842;
+    text-decoration: underline;
+    margin: 0 10px 30px 0;
+    display: inline-block;
+    font-size: 15px;
+}
+
+/* Test Final */
+
+.programming_languages__box{
+    padding: 50px 0;
+}
+.programming_languages__box h3{
+    color: #E68369;
+    font-size: 50px;
+    margin: 20px 0;
+}
+    
+.languages_box{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.language{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #E68369;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.writing_box{
+    padding: 50px 0;
+}
+.writing_box h2 a{
+    color: #E68369;
+    font-size: 50px;
+    text-decoration: none;
+}
+.writing_box h2{
+    margin-bottom: 20px;
+}
+.storyPrincipal__writing_box{
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+}
+.titleStory__box{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.descriptionStory__box{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+hr{
+    margin-bottom: 20px;
+}
+.iframe-container{
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.storyPrincipal__writing_box a{
+    color: #E68369;
+    text-decoration: none;
+    font-size: 1.25rem   ;
+}
+
+
+/* Aside CSS */
+aside {
+    display: flex;
+    padding: 50px 0;
+    justify-content: center;
+}
+form {
+    padding: 50px 55px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    text-align: center;
+    width: 60%;
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.input-group label{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.input-group input{
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #E68369;
+    border-radius: 20px;
+    outline: none;
+}
+.input-group textarea{
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #E68369;
+    border-radius: 20px;
+    outline: none;
+    font-family: "Roboto", sans-serif;
+}
+
+form h2{
+    color: #E68369;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+form label{
+    color: #FBF6E2;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+form input, form textarea{
+    padding: 17px 25px;
+    margin-bottom: 25px;
+    border: 2px solid #F0FAF1;
+    border-radius: 25px;
+    background-color: #EDFFF0;
+    color: #283629;
+    outline: none;
+}
+
+.form-txt{
+    margin-bottom: 30px;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.form-txt a{
+    color: #E68369;
+    text-decoration: none;
+    margin: 0 10px;
+}
+.form-txt a:hover{
+    text-decoration: underline;
+}
+.form-txt a:visited{
+    color: #E68369;
+}
+
+.btn{
+    padding: 15px 25px;
+    border: none;
+    border-radius: 25px;
+    background-color: #E68369;
+    color: #FBF6E2;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Footer CSS */
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    background-color: #E68369;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries */
+
+@media (max-width: 1020px) {
+    /* Mostrar el botón de menú */
+
+    button.menu-btn{
+        display: flex;
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 50%;
+        justify-content: right;
+    }
+    header img {
+        display: block;
+        margin: 0 30px;
+        text-align: right;
+        background: none;
+        border: none;
+        text-align: center;
+    }
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px 50px;
+    }
+
+    header h1{
+        margin: 0 20px;
+    }
+
+    header nav ul li a {
+        font-size: 16px;
+    }
+
+    header nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #E68369;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    header nav ul.show-menu {
+        display: flex; /* Muestra el menú cuando se abre */
+    }
+
+    /* Configuración de la página About Me */
+
+    .main_principal-aboutme{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box_aboutme1{
+        width: 100%;
+        text-align: center;
+    }
+    .box_aboutme1 img{
+        width: 70%;
+        border-radius: 20px;
+        margin-bottom: 20px;
+    }
+    .box_aboutme2{
+        width: 100%;
+        text-align: center;
+    }
+    .box_aboutme2 h1{
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+    .box_aboutme2__socialMedia{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    .title_socialMedia{
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+    .link__socialMedia{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        padding: 10px 20px;
+        background-color: #E68369;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        font-size: 20px;
+        text-decoration: none;
+        color: #FBF6E2;
+    }
+    .link__socialMedia:hover{
+        transform: scale(1.1);
+        transition: 0.5s;
+    }
+    .socialMedia{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1.5rem;
+    }
+    .socialMedia img{
+        width: 50px;
+        height: 50px;
+        border-radius: 10%;
+        margin: 10px;
+        cursor: pointer;
+    }
+    .socialMedia img:hover{
+        transform: scale(1.1);
+        transition: 0.5s;
+    }
+    .socialMedia a{
+        font-size: 20px;
+        text-decoration: none;
+        color: #FBF6E2;
+    }
+    
+    /* Fin de configuración de la página About Me */
+    
+
+    #intro h2 {
+        font-size: 40px;
+    }
+
+    .programming_box h2 {
+        font-size: 40px;
+    }
+
+    .title_project, .description_project {
+        font-size: 20px;
+    }
+
+    .storyPrincipal__writing_box {
+        width: 90%;
+    }
+
+    .programming_languages__box h3 {
+        font-size: 40px;
+    }
+
+    .languages_box {
+        grid-template-columns: 1fr; /* Single column for smaller screens */
+    }
+
+    .projects__programming_box {
+        grid-template-columns: 1fr; /* Single column for smaller screens */
+    }
+
+    form {
+        width: 90%;
+        padding: 30px;
+    }
+
+    form h2 {
+        font-size: 40px;
+    }
+
+    form input, form textarea {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+
+
+/* Further adjustments for mobile screens */
+@media (max-width: 768px) {
+
+    /* Mostrar el botón de menú */
+
+    button.menu-btn{
+        display: flex;
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 50%;
+        justify-content: right;
+    }
+    header img {
+        display: block;
+        margin: 0 30px;
+        text-align: right;
+        background: none;
+        border: none;
+        text-align: center;
+    }
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px 50px;
+    }
+
+    header h1{
+        margin: 0 20px;
+    }
+
+    header nav ul li a {
+        font-size: 16px;
+    }
+
+    header nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #E68369;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    header nav ul.show-menu {
+        display: flex; /* Muestra el menú cuando se abre */
+    }
+
+    /* Configuración de la página About Me */
+
+    .main_principal-aboutme{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box_aboutme1{
+        width: 100%;
+        text-align: center;
+    }
+
+    .box_aboutme1 img{
+        width: 90%;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        height: 400px;
+    }
+
+    .box_aboutme2{
+        width: 100%;
+        text-align: center;
+    }
+    .box_aboutme2 h1{
+        font-size: 3.125rem;
+        margin-bottom: 20px;
+    }
+    .aboutme2__text{
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .link__socialMedia{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1.5rem;
+        width: 70%;
+        margin: 0 auto;
+    }
+    .socialMedia img{
+        width: 50px;
+        height: 50px;
+        border-radius: 10%;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    
+    /* Fin de configuración de la página About Me */
+
+
+    #intro h2 {
+        font-size: 40px;
+    }
+
+    .programming_box h2 {
+        font-size: 40px;
+    }
+
+    .title_project, .description_project {
+        font-size: 20px;
+    }
+
+    .storyPrincipal__writing_box {
+        width: 90%;
+    }
+
+    .programming_languages__box h3 {
+        font-size: 40px;
+    }
+
+    form {
+        width: 90%;
+        padding: 30px;
+    }
+
+    form h2 {
+        font-size: 40px;
+    }
+
+    form input, form textarea {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
+
+
+/* Further adjustments for mobile screens */
+@media screen and (max-width: 630px) {
+    /* Mostrar el botón de menú */
+    header img {
+        display: block;
+        margin: 0 30px;
+        text-align: right;
+        background: none;
+        border: none;
+        text-align: center;
+    }
+    
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px 50px;
+    }
+    button.menu-btn{
+        display: flex;
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 50%;
+        justify-content: right;
+    }
+    header nav ul.show-menu {
+        display: flex; /* Muestra el menú cuando se abre */
+        margin-top: 40px;
+    }
+}
+/* Extra small devices (phones, less than 480px) */
+@media (max-width: 480px) {
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+    }
+
+    header nav ul li a {
+        font-size: 14px;
+    }
+
+    header nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #E68369;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .box_aboutme1 img {
+        width: 80%;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        height: 300px;
+    }
+
+    .box-content {
+        width: 80%;
+    }
+
+    #intro h2 {
+        font-size: 30px;
+    }
+
+    .programming_box h2 {
+        font-size: 30px;
+    }
+
+    .title_project, .description_project {
+        font-size: 18px;
+    }
+
+    .projects__programming_box {
+        grid-template-columns: 1fr; /* Single column for smaller screens */
+    }
+
+    .languages_box {
+        grid-template-columns: 1fr; /* Single column for smaller screens */
+    }
+
+    form {
+        width: 80%;
+        padding: 20px;
+    }
+
+    form h2 {
+        font-size: 30px;
+    }
+
+    form input, form textarea {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+}
+}
