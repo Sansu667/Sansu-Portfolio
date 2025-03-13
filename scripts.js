@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
  * - Adds active class to current section in nav
  * - Implements smooth scrolling
  */
+
 function initNavigation() {
     const header = document.querySelector('.header');
     const menuBtn = document.querySelector('.menu-btn');
@@ -53,7 +54,7 @@ function initNavigation() {
             closeNavWithAnimation();
         });
     }
-    
+
     // Helper function for closing navigation with animation
     function closeNavWithAnimation() {
         mainNav.style.opacity = '0';
