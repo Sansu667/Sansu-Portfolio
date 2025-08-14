@@ -439,6 +439,28 @@ section {
     gap: 0.5rem;
 }
 
+.full-text {
+    display: none;
+}
+
+.short-text {
+    display: inline;
+}
+
+.read-more-btn {
+    background: none;
+    border: none;
+    color: #007bff;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.read-more-btn:hover {
+    text-decoration: underline;
+}
+
 /* Skills Section */
 .skills-content {
     max-width: 800px;

@@ -1,10 +1,4 @@
-/**
- * Portfolio JavaScript Functionality
- * Modern, professional interactions for a portfolio website
- */
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all components
     initNavigation();
     initScrollEffects();
     initProjectFilters();
@@ -15,14 +9,23 @@ document.addEventListener('DOMContentLoaded', function() {
     initTypingEffect();
     initSkillsProgress();
     initTooltips();
-});
+    const description = document.getElementById('filomates-description');
+    const readMoreBtn = description.querySelector('.read-more-btn');
+    const shortText = description.querySelector('.short-text');
+    const fullText = description.querySelector('.full-text');
 
-/**
- * Navigation functionality
- * - Handles mobile navigation toggle with smooth animation
- * - Adds active class to current section in nav
- * - Implements smooth scrolling
- */
+    readMoreBtn.addEventListener('click', function() {
+        if (shortText.style.display === 'none') {
+            shortText.style.display = 'inline';
+            fullText.style.display = 'none';
+            readMoreBtn.textContent = 'Read More';
+        } else {
+            shortText.style.display = 'none';
+            fullText.style.display = 'inline';
+            readMoreBtn.textContent = 'Read Less';
+        }
+    });
+});
 
 function initNavigation() {
     const header = document.querySelector('.header');
