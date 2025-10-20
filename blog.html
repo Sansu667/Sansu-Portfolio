@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Santiago Suarez</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/jpeg" sizes="32x32" href="img/perfil_img.jpeg">
+</head>
+<body>
+    <div class="reading-progress"></div>
+
+    <header class="header">
+        <div class="container header-container">
+            <h1 class="logo"><a href="index.html">Santiago Suarez</a></h1>
+            <button class="menu-btn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="main-nav">
+                <button class="close-btn" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#skills">Skills</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="./blog.html" class="active">Blog</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="blog-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Explore my blog</h2>
+                <p class="section-subtitle">Ideas about Technology, Philosophy and Data Science.</p>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="blog-search">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search posts by title, keyword or tag..." aria-label="Search Posts">
+                <i class="fas fa-search search-icon" aria-hidden="true"></i>
+            </div>
+            
+            <div class="blog-categories" id="blogCategories">
+                <button class="category-btn active" data-category="all" aria-pressed="true">All Categories</button>
+                <button class="category-btn" data-category="tech" aria-pressed="false">Technology</button>
+                <button class="category-btn" data-category="philosophy" aria-pressed="false">Philosophy</button>
+                <button class="category-btn" data-category="data" aria-pressed="false">Data Science</button>
+            </div>
+
+            <div class="blog-grid" id="blogGrid">
+                <article class="blog-post" data-category="tech" tabindex="0" data-post-id="1" aria-labelledby="post-title-1">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop" alt="Entorno de desarrollo web moderno" loading="lazy">
+                        <span class="post-category">Technology</span>
+                    </div>
+                    <div class="post-content">
+                        <h3 id="post-title-1">Prácticas Modernas en Desarrollo Web</h3>
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar-alt"></i> Oct 20, 2025</span>
+                            <span><i class="far fa-clock"></i> 5 min de lectura</span>
+                        </div>
+                        <p class="post-excerpt">Explorando las últimas tendencias y mejores prácticas en el desarrollo web moderno, desde el diseño responsive hasta la optimización del rendimiento.</p>
+                        <a href="#" class="read-more" data-post-id="1">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post" data-category="philosophy" tabindex="0" data-post-id="2" aria-labelledby="post-title-2">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&h=400&fit=crop" alt="Libros y concepto abstracto de filosofía" loading="lazy">
+                        <span class="post-category">Philosophy</span>
+                    </div>
+                    <div class="post-content">
+                        <h3 id="post-title-2">La Naturaleza de los Objetos Matemáticos</h3>
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar-alt"></i> Oct 18, 2025</span>
+                            <span><i class="far fa-clock"></i> 8 min de lectura</span>
+                        </div>
+                        <p class="post-excerpt">Investigando la naturaleza de los objetos matemáticos y su relación con la realidad en la filosofía contemporánea de las matemáticas.</p>
+                        <a href="#" class="read-more" data-post-id="2">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post" data-category="data" tabindex="0" data-post-id="3" aria-labelledby="post-title-3">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop" alt="Análisis de datos en un entorno de trabajo" loading="lazy">
+                        <span class="post-category">Data Science</span>
+                    </div>
+                    <div class="post-content">
+                        <h3 id="post-title-3">Análisis Estadístico Avanzado en Python</h3>
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar-alt"></i> Oct 15, 2025</span>
+                            <span><i class="far fa-clock"></i> 6 min de lectura</span>
+                        </div>
+                        <p class="post-excerpt">Una guía práctica para realizar análisis estadístico utilizando las principales bibliotecas de ciencia de datos de Python.</p>
+                        <a href="#" class="read-more" data-post-id="3">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post" data-category="philosophy" tabindex="0" data-post-id="4" aria-labelledby="post-title-4">
+                    <div class="post-image">
+                        <img src="https://plus.unsplash.com/premium_vector-1682309401828-775adf726c2b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170" alt="Persona analizando noticias digitales" loading="lazy">
+                        <span class="post-category">Critical Thinking</span>
+                    </div>
+                    <div class="post-content">
+                        <h3 id="post-title-4">Beyond the Click: 5 Questions You Must Ask to Defeat Fake News</h3>
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar-alt"></i> Oct 20, 2025</span>
+                            <span><i class="far fa-clock"></i> 7 min de lectura</span>
+                        </div>
+                        <p class="post-excerpt">In the age of social media, our greatest defense against misinformation is not skepticism, but critical literacy. Are you truly reading the news, or just scrolling headlines?</p>
+                        <a href="#" class="read-more" data-post-id="4">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post" data-category="justice" tabindex="0" data-post-id="5" aria-labelledby="post-title-5">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1721352794721-9a2f91f8dcbd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=978" alt="Balanza de la justicia sobre un fondo oscuro" loading="lazy">
+                        <span class="post-category">Ethics & Justice</span>
+                    </div>
+                    <div class="post-content">
+                        <h3 id="post-title-5">Rehabilitation vs. Retribution: The Two Faces of Justice</h3>
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar-alt"></i> Oct 20, 2025</span>
+                            <span><i class="far fa-clock"></i> 8 min de lectura</span>
+                        </div>
+                        <p class="post-excerpt">Why does society punish? The debate over justice systems has always centered on two opposing goals: making criminals pay their debt, or helping them become productive citizens.</p>
+                        <a href="#" class="read-more" data-post-id="5">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post" data-category="philosophy" tabindex="0" data-post-id="6" aria-labelledby="post-title-6">
+                    <div class="post-image">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0NgkEmexqO2ZxxnDdydmZ7w0xSkNSQqxhnA&s" alt="Princess Mononoke" loading="lazy">
+                        <span class="post-category">Philosophy</span>
+                    </div>
+                    <div class="post-content">
+                        <h3 id="post-title-5">Princess Mononoke review: violence, love and the crisis of nature</h3>
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar-alt"></i> Dec 7, 2024</span>
+                            <span><i class="far fa-clock"></i> 8 min de lectura</span>
+                        </div>
+                        <p class="post-excerpt">Princess Mononoke, directed by Hayao Miyazaki, is a Japanese animated epic set in a fantastical version of feudal Japan. The story follows Ashitaka, a young prince of the Emishi people, who is cursed by a demon boar while protecting his village. Seeking a cure for his curse, which threatens to kill him, Ashitaka journeys west in search of the source of the boar's suffering.</p>
+                        <a href="#" class="read-more" data-post-id="5">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <div class="loading hidden">Cargando posts</div> 
+            </div>
+
+            <div class="newsletter-section">
+                <div class="newsletter-icon" aria-hidden="true">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+                <h3>Join the Community and Receive News</h3>
+                <p>Get my latest thoughts and technical guides delivered straight to your inbox.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Ingresa tu correo electrónico" required aria-label="Dirección de correo electrónico">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-envelope-open-text"></i> Subscribe
+                    </button>
+                </form>
+                <div class="newsletter-privacy">
+                    <small><i class="fas fa-lock"></i> Your email is secure. No spam, cancel anytime.</small>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="blog-modal" id="blogModal" aria-modal="true" role="dialog" aria-hidden="true">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" aria-label="Cerrar ventana modal" id="modalCloseBtn">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-category"></span>
+                    <h1 class="modal-title"></h1>
+                    <div class="modal-info">
+                        <span class="modal-author"><i class="fas fa-user-circle"></i> Santiago Suarez</span>
+                        <span class="modal-date"><i class="far fa-calendar-alt"></i></span>
+                        <span class="modal-read-time"><i class="far fa-clock"></i></span>
+                    </div>
+                </div>
+                <img src="" alt="Imagen principal del post" class="modal-image" id="modalImage">
+                <div class="modal-body">
+                    </div>
+                
+                <div class="modal-tags">
+                    <h4>Etiquetas:</h4>
+                    <div class="tags-list">
+                        </div>
+                </div>
+
+                <div class="modal-share">
+                    <h4>Share this post:</h4>
+                    <div class="share-buttons">
+                        <button class="share-btn" data-share="twitter"><i class="fab fa-twitter"></i> Twitter</button>
+                        <button class="share-btn" data-share="linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</button>
+                        <button class="share-btn" data-share="copy" id="copyLinkBtn"><i class="fas fa-link"></i> Copiar Enlace</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i> Link copied to clipboard!
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Santiago Suarez</h3>
+                    <p>Software Developer & Philosophy-Statistics Student</p>
+                </div>
+                
+                <div class="footer-nav">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="https://github.com/Sansu667" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/edgar-santiago-suarez-alzate-572379210/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://x.com/Santez666_" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Sansu Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

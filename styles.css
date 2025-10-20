@@ -33,6 +33,9 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
+    min-height: 100vh;
+    padding-top: 80px;
+    margin: 0;
 }
 
 a {
@@ -123,15 +126,14 @@ img {
 
 /* Header */
 .header {
-    position: fixed;
-    top: 0;
+    position: fixed; /* Hace que el header se quede fijo en la ventana */
+    top: 0;          /* Lo ancla a la parte superior */
     left: 0;
-    width: 100%;
-    z-index: 100;
-    background-color: rgba(19, 24, 66, 0.95);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;     /* Ocupa todo el ancho */
+    z-index: 1000;   /* Asegura que esté por encima de otros elementos */
+    background: var(--bg-color); /* Usar variable de fondo para consistencia */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacarlo */
     transition: var(--transition);
-    padding: 1rem 0;
 }
 
 .header.scrolled {
@@ -220,11 +222,7 @@ img {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
     padding: 8rem 0 5rem;
-    position: relative;
     overflow: hidden;
 }
 
@@ -627,6 +625,568 @@ section {
     color: rgba(255, 255, 255, 0.7);
 }
 
+
+.blog-search {
+    position: relative;
+    max-width: 600px; /* Aumento para un mejor input */
+    margin: 2rem auto 2.5rem; /* Margen superior e inferior más generoso */
+}
+
+.blog-section {
+    padding-top: 1rem; /* Si necesitas espacio inicial, mantenlo. Si no, puedes quitarlo. */
+    min-height: calc(100vh - 80px); /* 100vh menos la altura del header (80px) */
+    display: flex; /* Esto ayuda a asegurar que los hijos se distribuyan */
+    flex-direction: column;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.9rem 1.2rem 0.9rem 3rem; /* Más espacio para ícono y comodidad */
+    border: 1px solid var(--secondary-color); /* Borde más sutil */
+    border-radius: 30px; /* Más redondeado */
+    background: var(--secondary-color);
+    color: var(--text-color);
+    font-size: 1.05rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra ligera por defecto */
+    transition: var(--transition);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: var(--bg-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3); /* Anillo de enfoque (ring) */
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.2rem; /* Ajustado para el nuevo padding */
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none; /* Asegura que el ícono no bloquee el click al input */
+    transition: color 0.3s ease;
+}
+
+.search-input:focus + .search-icon {
+    color: var(--primary-color);
+}
+
+/* Blog Categories - Nuevo/Mejorado */
+.blog-categories {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    padding: 0.6rem 1.5rem;
+    border: 2px solid var(--secondary-color);
+    border-radius: 25px;
+    background: var(--secondary-color);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.category-btn:hover:not(.active) {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.category-btn.active {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Blog Post Grid & Card - Mejorado */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem; /* Aumento del espaciado */
+    margin-bottom: 4rem;
+}
+
+.blog-post {
+    background: var(--bg-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-light); /* Aplicar sombra ligera */
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    transform: translateY(0);
+    transition: var(--transition), box-shadow 0.3s ease; /* Transición también para sombra */
+    cursor: pointer;
+}
+
+.blog-post:hover {
+    box-shadow: var(--shadow-dark); /* Sombra más pronunciada al pasar el ratón */
+    transform: translateY(-5px); /* Efecto de "levantamiento" */
+}
+
+.post-image {
+    position: relative;
+    overflow: hidden;
+    height: 200px; /* Altura fija para uniformidad */
+}
+
+.post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: var(--transition);
+}
+
+.blog-post:hover .post-image img {
+    transform: scale(1.08); /* Aumento ligeramente el zoom */
+}
+
+.post-category {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(102, 126, 234, 0.9); /* Usar Primary Color con opacidad */
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    z-index: 2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.post-content {
+    padding: 1.5rem;
+    flex-grow: 1; /* Para que el contenido ocupe el espacio restante */
+    display: flex;
+    flex-direction: column;
+}
+
+.post-content h3 {
+    font-size: 1.35rem; /* Ligeramente más grande */
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+    color: var(--text-color);
+}
+
+.post-meta {
+    display: flex;
+    gap: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.post-meta i {
+    color: var(--primary-color);
+    margin-right: 0.3rem;
+}
+
+.post-excerpt {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    flex-grow: 1; /* Empuja el botón "Read More" hacia abajo */
+}
+
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.read-more:hover {
+    color: #4a5dca; /* Tono más oscuro de Primary al pasar el ratón */
+}
+
+.read-more i {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.read-more:hover i {
+    transform: translateX(3px); /* Pequeño deslizamiento */
+}
+
+/* Loading State */
+.loading {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    display: none !important;
+    visibility: hidden;
+}
+
+.loading::after {
+    content: " . . ."; /* Cambio para mejor visualización */
+    display: inline-block;
+    width: 20px; /* Asegurar espacio */
+    overflow: hidden;
+    animation: dots 1.5s steps(3, end) infinite; /* Ajustado a 3 puntos */
+}
+
+@keyframes dots {
+    0% { content: "."; }
+    33% { content: ".."; }
+    66%, 100% { content: "..."; }
+}
+
+/* Newsletter Subscription - Mejorado */
+.newsletter-section {
+    position: relative;
+    text-align: center;
+    padding: 4rem 2rem; /* Padding más amplio */
+    background: var(--secondary-color);
+    border-radius: var(--border-radius);
+    margin-top: 4rem;
+    box-shadow: var(--shadow-light);
+}
+
+.newsletter-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.newsletter-section p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-icon {
+    font-size: 3.5rem; /* Más grande */
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input[type="email"] {
+    flex-grow: 1;
+    padding: 0.8rem 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: border-color 0.3s ease;
+}
+
+.newsletter-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.newsletter-form .btn-primary {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.newsletter-form .btn-primary:hover {
+    background: #4a5dca; /* Tono más oscuro de Primary al pasar el ratón */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.newsletter-privacy {
+    margin-top: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.newsletter-privacy i {
+    margin-right: 0.4rem;
+    color: var(--primary-color);
+}
+
+/*
+ * ========================================
+ * ESTILOS DEL MODAL (Mejorado)
+ * ========================================
+ */
+
+.blog-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex; /* Usar flexbox para centrar */
+    justify-content: center;
+    align-items: center;
+    visibility: hidden; /* Mejor control que display: none */
+    opacity: 0;
+    transition: visibility 0s 0.3s, opacity 0.3s ease;
+}
+
+.blog-modal.active {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s 0s, opacity 0.3s ease;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Oscurecido ligeramente */
+    -webkit-backdrop-filter: blur(8px); /* Safari/iOS support */
+    backdrop-filter: blur(8px); /* Blur más pronunciado */
+    animation: overlayFadeIn 0.3s ease;
+}
+
+@keyframes overlayFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-container {
+    position: relative;
+    width: 95%;
+    max-width: 950px; /* Aumentado el ancho máximo */
+    height: 90vh;
+    background: var(--bg-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.7); /* Sombra más fuerte */
+    z-index: 10000;
+    /* Ajustado el uso de keyframes con .active */
+}
+
+.blog-modal.active .modal-container {
+    animation: modalSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: scale(0.95); /* Nuevo efecto de escalado */
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    /* Mantiene estilos, solo se cambia el hover para ser más atractivo */
+    background: var(--primary-color);
+    transition: var(--transition);
+}
+
+.modal-close:hover {
+    transform: rotate(180deg) scale(1.1); /* Rotación completa y escala */
+    background: #ff4757;
+}
+
+.modal-content {
+    height: 100%;
+    overflow-y: auto;
+    padding: 3rem; /* Más padding para contenido */
+    scroll-behavior: smooth; /* Desplazamiento suave */
+}
+
+/* Scrollbar Styles - Mantenido y consistente */
+
+.modal-header {
+    margin-bottom: 2.5rem; /* Más espacio */
+}
+
+.modal-image {
+    width: 100%;
+    max-height: 400px; /* Máx. altura para desktop */
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+}
+
+.modal-category {
+    background: var(--primary-color);
+    padding: 0.4rem 1.2rem;
+    border-radius: 20px; /* Más redondeado */
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.modal-title {
+    font-size: 2.5rem; /* Título más prominente */
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    color: var(--text-color);
+}
+
+.modal-info {
+    display: flex;
+    gap: 2rem; /* Más espacio entre elementos */
+    color: var(--text-secondary);
+    font-size: 1rem; /* Ligeramente más grande */
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--secondary-color); /* Separador sutil */
+    padding-bottom: 1rem;
+}
+
+.modal-info i {
+    margin-right: 0.4rem;
+    color: var(--primary-color);
+}
+
+.modal-body {
+    line-height: 1.9; /* Mayor interlineado para mejor legibilidad */
+    font-size: 1.05rem;
+    margin-bottom: 3rem;
+}
+
+.modal-body h2 {
+    font-size: 1.8rem; /* Más prominente */
+    margin: 3rem 0 1.5rem;
+    color: var(--primary-color);
+    border-left: 4px solid var(--primary-color); /* Estilo de borde */
+    padding-left: 1rem;
+}
+
+.modal-body h3 {
+    font-size: 1.4rem;
+    margin: 2rem 0 1rem;
+    color: var(--text-color);
+}
+
+.modal-body p {
+    margin-bottom: 1.5rem;
+}
+
+.modal-body ul, .modal-body ol { /* Añadida lista ordenada */
+    margin: 1.5rem 0 1.5rem 2rem;
+    padding-left: 0;
+}
+
+.modal-body li {
+    margin-bottom: 0.7rem;
+    padding-left: 0.5rem;
+}
+
+.modal-body strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* Tags, Share y Notification - Mejorados */
+.modal-tags {
+    margin-bottom: 2.5rem;
+}
+
+.modal-tags h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.tag {
+    background: var(--secondary-color);
+    padding: 0.4rem 1.1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.tag:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.modal-share {
+    border-top: 1px solid #e0e0e0; /* Borde más sutil */
+    padding-top: 2rem;
+    margin-top: 2rem;
+}
+
+.modal-share h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.share-btn {
+    /* Manteniendo estilos base */
+    background: var(--secondary-color);
+}
+
+.share-btn:hover {
+    background: var(--primary-color);
+    color: white; /* Asegurar que el ícono sea blanco al pasar el ratón */
+    transform: translateY(-3px); /* Efecto de levantamiento más notorio */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.share-btn i {
+    font-size: 1.1rem;
+}
+
+/* Notification Styles */
+.notification {
+    /* Mantenido */
+    position: fixed;
+    bottom: -100px; /* Asegura que esté oculta fuera de la pantalla por defecto */
+    right: 2rem;
+    left: initial; /* Asegura que solo se fije a la derecha en desktop */
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 10000;
+    transition: bottom 0.3s ease;
+}
+
+.notification.show {
+    bottom: 2rem; /* El mensaje sube desde abajo */
+}
+
+/* Reading Progress Bar */
+.reading-progress {
+    height: 4px; /* Un poco más grueso */
+}
+
 /* Responsive Styles */
 @media (max-width: 992px) {
     .hero-title {
@@ -744,6 +1304,16 @@ section {
         height: 180px;
     }
 }
+
+/* Tema oscuro opcional */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --secondary-color: #2c2c2c;
+                --text-color: #ffffff;
+                --text-secondary: #aaaaaa;
+            }
+        }
 
 /* Animations */
 @keyframes fadeIn {
