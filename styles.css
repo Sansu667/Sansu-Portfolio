@@ -632,11 +632,6 @@ section {
     margin-left: 0.5rem;
 }
 
-/* Layout específico para el Bento Grid de proyectos */
-.projects-grid.bento-grid-modern .grid-item.large {
-    grid-column: span 2;
-}
-
 /* ================================================= */
 /* 7. SKILLS SECTION (BENTO GRID REAL)               */
 /* ================================================= */
