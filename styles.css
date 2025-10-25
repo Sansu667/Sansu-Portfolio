@@ -42,6 +42,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden; /* Evitar scroll horizontal accidental */
 }
 
 body {
@@ -52,12 +53,9 @@ body {
     min-height: 100vh;
     padding-top: 60px; /* Altura del header fijo */
     margin: 0;
+    overflow-x: hidden; /* Previene scroll horizontal */
 }
-/* Añadir clase dark-mode por defecto si no existe */
-body:not(.dark-mode) {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-}
+/* Asegura que dark-mode se aplique correctamente */
 body.dark-mode {
      background-color: var(--bg-color);
     color: var(--text-color);
@@ -92,21 +90,22 @@ img {
 .accent-color-dev { color: var(--accent-color-dev); }
 .text-center { text-align: center; }
 .subtitle-text {
-    font-size: 1.2rem;
+    font-size: 1.1rem; /* Ligeramente más pequeño */
     color: var(--text-secondary);
     margin-bottom: var(--spacing-lg);
-    max-width: 800px;
+    max-width: 700px; /* Un poco más estrecho */
     margin-left: auto;
     margin-right: auto;
+    padding: 0 var(--spacing-sm); /* Añadir padding en móvil */
 }
 .section-title {
-    font-size: 3rem;
+    font-size: 2.5rem; /* Ligeramente más pequeño */
     font-weight: 900;
     margin-bottom: var(--spacing-md);
     color: var(--text-color);
 }
 .lead-paragraph {
-    font-size: 1.25rem;
+    font-size: 1.15rem; /* Ligeramente más pequeño */
     margin-bottom: var(--spacing-md);
     color: var(--text-secondary);
 }
@@ -127,11 +126,12 @@ img {
     cursor: pointer;
     text-align: center;
     border: none;
-    font-size: 1rem;
+    font-size: 0.95rem; /* Ligeramente más pequeño */
     letter-spacing: 0.5px;
     gap: 0.5rem;
     text-transform: uppercase;
     transition: var(--transition);
+    white-space: nowrap; /* Evitar que el texto del botón se rompa */
 }
 
 .btn-primary {
@@ -161,18 +161,18 @@ img {
 
 .btn-large {
     padding: 1rem 3rem;
-    font-size: 1.1rem;
+    font-size: 1.05rem; /* Ligeramente más pequeño */
 }
 
 /* Botón Outline antiguo (por si se usa en blog) */
 .btn-outline {
     background-color: transparent;
-    border: 1px solid var(--text-color); /* Usar text-color para contraste */
+    border: 1px solid var(--text-color); 
     color: var(--text-color);
 }
 .btn-outline:hover {
     background-color: var(--text-color);
-    color: var(--bg-color); /* Invertir colores */
+    color: var(--bg-color); 
 }
 
 /* Botón Small antiguo (por si se usa en blog) */
@@ -201,7 +201,7 @@ img {
 }
 /* Efecto al hacer scroll */
 .header.scrolled {
-    background-color: rgba(30, 30, 30, 0.98); /* Ligeramente más claro al hacer scroll */
+    background-color: rgba(30, 30, 30, 0.98); 
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
 }
 
@@ -210,7 +210,7 @@ img {
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    position: relative; /* Para el posicionamiento absoluto del botón de idioma */
+    position: relative; 
 }
 
 .logo a {
@@ -221,17 +221,17 @@ img {
 }
 
 .main-nav {
-    display: flex; /* Asegura visibilidad en desktop */
+    display: flex; /* Visible en desktop */
 }
 .main-nav ul {
     display: flex;
     list-style: none;
-    gap: 2rem;
-    align-items: center; /* Alinea verticalmente los items */
+    gap: 1.5rem; /* Espacio reducido */
+    align-items: center; 
 }
 
 .main-nav ul li a {
-    font-weight: 400;
+    font-weight: 500; /* Un poco más grueso */
     color: var(--text-secondary);
     letter-spacing: 0.5px;
     position: relative;
@@ -246,7 +246,7 @@ img {
 .main-nav ul li a::after {
     content: '';
     position: absolute;
-    bottom: -2px; /* Ligeramente debajo */
+    bottom: -2px; 
     left: 0;
     width: 0;
     height: 2px;
@@ -278,11 +278,12 @@ img {
     font-size: 1.5rem;
     cursor: pointer;
     z-index: 1002;
+    padding: 0.5rem; /* Área de toque más grande */
 }
 
-/* Contenedor Nav Móvil (aparece con JS) */
+/* Contenedor Nav Móvil */
 .main-nav .close-btn {
-    display: none; /* Oculto por defecto */
+    display: none; 
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
@@ -304,42 +305,42 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    padding: var(--spacing-xl) 0;
+    overflow: hidden; /* Asegurar que no haya overflow */
+    padding: var(--spacing-lg) 1rem; /* AÑADIDO: Padding horizontal fijo */
     text-align: center;
 }
 
 .hero-content-wrapper {
     z-index: 10;
     position: relative;
+    width: 100%; /* Ocupar ancho */
 }
 
 .hero-intro-text {
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* Ajustado */
     font-weight: 300;
     color: var(--text-secondary);
     margin-bottom: 0.5rem;
 }
 
 .hero-title {
-    font-size: 8vw; 
+    font-size: clamp(2.5rem, 10vw, 6rem); /* Mantiene clamp para pantallas mayores */
     font-weight: 900;
     line-height: 1.1;
     color: var(--text-color);
-    margin-bottom: 3rem;
-    letter-spacing: -3px;
+    margin-bottom: var(--spacing-lg); /* Aumentado margen inferior */
+    letter-spacing: -2px; /* Ligeramente menos negativo */
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
-}
-@media (min-width: 1400px) { /* Límite superior para el tamaño */
-    .hero-title { font-size: 112px; }
+    word-break: break-word; /* Permitir que palabras largas se rompan si es necesario */
+    padding: 0 0.5rem; /* AÑADIDO: Padding horizontal para el título */
 }
 
 .highlight-line {
     display: inline-block;
-    padding: 0.1em 0.3em; /* Ajuste padding */
+    padding: 0.1em 0.3em; 
     border-radius: 8px;
-    margin: 0 0.1em; /* Ajuste margen */
-    white-space: nowrap;
+    margin: 0.1em 0.2em; /* Margen vertical para evitar solapamiento si se rompe la línea */
+    /* white-space: nowrap; */ /* ELIMINADO para móvil, re-añadido en desktop */
     transition: var(--transition);
 }
 
@@ -356,17 +357,19 @@ img {
 .choice-container {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem; /* Reducido gap */
+    flex-wrap: wrap; /* Permitir que los botones se envuelvan */
 }
 
 .choice-btn {
-    padding: 1rem 2.5rem;
-    border-radius: 50px; /* Redondeado */
-    font-size: 1.1rem;
+    padding: 0.9rem 2rem; /* Ligeramente más pequeño */
+    border-radius: 50px; 
+    font-size: 1rem; /* Ligeramente más pequeño */
     font-weight: 700;
     box-shadow: var(--shadow);
     text-transform: uppercase;
     transition: var(--transition);
+    min-width: 220px; /* Ancho mínimo para legibilidad */
 }
 
 .choice-dev {
@@ -380,13 +383,13 @@ img {
 }
 
 .choice-dev:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(74, 144, 226, 0.6);
+    transform: translateY(-5px) scale(1.03); /* Hover más sutil */
+    box-shadow: 0 10px 25px rgba(74, 144, 226, 0.5);
 }
 
 .choice-stat:hover {
-    transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(230, 210, 77, 0.6);
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(230, 210, 77, 0.5);
 }
 
 /* FOTO FLOTANTE */
@@ -397,13 +400,13 @@ img {
     transform: translateY(-50%) rotate(3deg); 
     opacity: 0; 
     visibility: hidden;
-    transition: opacity 1s ease 0.5s, transform 1s ease 0.5s; /* Añadido delay */
+    transition: opacity 1s ease 0.5s, transform 1s ease 0.5s; 
     z-index: 5;
     background-color: var(--secondary-bg);
     border-radius: var(--border-radius);
     padding: var(--spacing-sm);
     box-shadow: var(--shadow);
-    max-width: 250px;
+    max-width: 200px; /* Más pequeño */
 }
 
 .floating-profile.visible {
@@ -413,8 +416,8 @@ img {
 }
 
 .floating-profile .image-container {
-    width: 200px;
-    height: 200px;
+    width: 150px; /* Más pequeño */
+    height: 150px;
     margin: 0 auto;
     border-radius: 50%;
     overflow: hidden;
@@ -435,7 +438,7 @@ img {
 
 .floating-caption {
     font-family: var(--font-code);
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Más pequeño */
     color: var(--text-secondary);
     margin-top: 0.5rem;
     text-align: center;
@@ -445,7 +448,7 @@ img {
 /* 5. ABOUT SECTION (GRID LIMPIO)                    */
 /* ================================================= */
 section {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0; /* Reducido padding vertical */
     border-top: 1px solid rgba(255, 255, 255, 0.05); 
 }
 
@@ -458,9 +461,9 @@ section {
 }
 
 .about-text-box {
-    padding: var(--spacing-md) 0;
+    padding: 0; /* Quitar padding extra */
 }
-.about-text-box p strong { /* Estilo para el texto en negrita */
+.about-text-box p strong { 
     color: var(--primary-color);
     font-weight: 700;
 }
@@ -486,16 +489,18 @@ section {
 
 .detail-group i {
     color: var(--accent-color-dev);
-    font-size: 1.3em; /* Iconos un poco más grandes */
+    font-size: 1.3em; 
 }
 .detail-group p {
     color: var(--text-secondary);
+    font-size: 0.95rem; /* Ligeramente más pequeño */
 }
 
 .about-cta-links {
     display: flex;
     gap: var(--spacing-md);
     margin-top: var(--spacing-md);
+    flex-wrap: wrap; /* Permitir envolver botones */
 }
 
 /* ================================================= */
@@ -504,7 +509,6 @@ section {
 
 .projects-grid {
     display: grid;
-    /* Usar bento-grid-modern para layout bento */
     gap: var(--spacing-md);
     margin: 0 auto;
 }
@@ -515,7 +519,7 @@ section {
 .category-filter {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem; /* Reducido gap */
     margin-bottom: var(--spacing-lg);
     flex-wrap: wrap;
 }
@@ -552,14 +556,20 @@ section {
     justify-content: space-between;
     transition: var(--transition);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    opacity: 1; /* Visible por defecto */
+    opacity: 1; 
     transform: scale(1);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
-.project-card.hidden { /* Clase para ocultar con JS */
+.project-card.hidden { 
     opacity: 0;
-    transform: scale(0.8);
+    transform: scale(0.95);
     pointer-events: none;
+    /* Para que no ocupen espacio al ocultarse */
+     height: 0; 
+     padding: 0;
+     margin: 0;
+     overflow: hidden;
+     border: none;
 }
 .project-card:hover {
     transform: translateY(-5px);
@@ -588,7 +598,7 @@ section {
 }
 
 .project-card h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem; /* Ligeramente más pequeño */
     margin-bottom: 0.5rem;
     color: var(--text-color);
 }
@@ -596,6 +606,7 @@ section {
     color: var(--text-secondary);
     flex-grow: 1;
     margin-bottom: var(--spacing-md);
+    font-size: 0.95rem; /* Ligeramente más pequeño */
 }
 
 .card-footer {
@@ -604,15 +615,18 @@ section {
     align-items: center;
     border-top: 1px solid #333;
     padding-top: 1rem;
+    flex-wrap: wrap; /* Permitir envolver en pantallas pequeñas */
+    gap: 0.5rem;
 }
 .tech-stack {
     font-family: var(--font-code);
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Ligeramente más pequeño */
     color: var(--text-secondary);
 }
 .card-link {
     color: var(--primary-color);
     font-weight: 700;
+    font-size: 0.9rem; /* Ligeramente más pequeño */
 }
 .card-link i {
     margin-left: 0.5rem;
@@ -622,12 +636,6 @@ section {
 .projects-grid.bento-grid-modern .grid-item.large {
     grid-column: span 2;
 }
-@media (max-width: 768px) { /* En móvil, todos ocupan 1 columna */
-    .projects-grid.bento-grid-modern .grid-item.large {
-        grid-column: span 1;
-    }
-}
-
 
 /* ================================================= */
 /* 7. SKILLS SECTION (BENTO GRID REAL)               */
@@ -656,7 +664,7 @@ section {
 }
 
 .bento-item h3 {
-    font-size: 1.6rem;
+    font-size: 1.4rem; /* Ligeramente más pequeño */
     margin-bottom: 1rem;
     color: var(--text-color);
 }
@@ -671,13 +679,12 @@ section {
     font-family: var(--font-code);
     padding: 0.5rem 1rem;
     border-radius: 6px;
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Ligeramente más pequeño */
     font-weight: 500;
 }
 
 /* Tamaños específicos en el Bento Grid de Skills */
 .skills-grid .item-data {
-    grid-column: span 2; 
     background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
 }
 
@@ -703,8 +710,8 @@ section {
     border-color: rgba(230, 131, 105, 0.3);
 }
 .skills-grid .skill-tag.tag-soft {
-     background-color: rgba(150, 50, 150, 0.15); /* Morado suave */
-    color: #c568c5; /* Tono de morado */
+     background-color: rgba(150, 50, 150, 0.15); 
+    color: #c568c5; 
     border-color: rgba(150, 50, 150, 0.3);
 }
 
@@ -714,7 +721,7 @@ section {
 
 .contact-cta {
     background-color: var(--secondary-bg);
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0; /* Reducido */
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -747,7 +754,7 @@ section {
     margin-bottom: 1rem;
     font-weight: 700;
 }
-.footer-social .social-links { /* Estilos específicos para los iconos sociales del footer */
+.footer-social .social-links { 
     display: flex;
     gap: 1rem;
 }
@@ -782,19 +789,19 @@ section {
 .lang-toggle-btn {
     position: absolute;
     top: 50%;
-    /* Ajusta 'right' para que no colisione con el menú móvil si se implementa */
-    right: 4rem; 
+    right: 4rem; /* A la izquierda del menú burger en móvil */
     transform: translateY(-50%);
     background: var(--secondary-bg);
     color: var(--text-color);
     border: 1px solid var(--text-secondary);
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem; /* Ligeramente más pequeño */
     border-radius: 50px;
     font-weight: 700;
     cursor: pointer;
-    z-index: 1001; /* Sobre la nav */
+    z-index: 1001; 
     transition: var(--transition);
     font-family: var(--font-code);
+    font-size: 0.85rem; /* Ligeramente más pequeño */
 }
 
 .lang-toggle-btn:hover {
@@ -809,13 +816,17 @@ section {
 /* ================================================= */
 
 @media (max-width: 992px) {
+    .section-title { font-size: 2.5rem; }
     .about-grid {
         grid-template-columns: 1fr;
     }
     .floating-profile {
         right: 2%;
-        max-width: 200px;
+        max-width: 180px; /* Más pequeño */
     }
+     .floating-profile .image-container { width: 130px; height: 130px; } /* Más pequeño */
+     .floating-caption { font-size: 0.8rem; }
+
     .skills-grid.bento-grid-modern {
         grid-template-columns: 1fr 1fr;
     }
@@ -824,9 +835,10 @@ section {
     }
     .item-vertical {
         grid-row: span 1;
+        grid-column: span 2; /* Ocupar todo el ancho si queda solo */
     }
     .footer-content-grid {
-        grid-template-columns: 1fr; /* Apilar en tablet */
+        grid-template-columns: 1fr; 
         text-align: center;
     }
     .footer-social .social-links {
@@ -836,28 +848,23 @@ section {
 
 @media (max-width: 768px) {
     body {
-        padding-top: 60px; /* Ajusta si la altura del header cambia */
+        padding-top: 60px; 
     }
-    .header {
-        /* No centrar, mantener logo a la izquierda, burger a la derecha */
-        /* justify-content: center; */ 
-    }
-     .header-container {
-        position: relative; /* Asegurar posicionamiento correcto del botón */
+    .header-container {
+        position: relative; 
     }
     .menu-btn {
-        display: block; /* Mostrar burger */
-        position: absolute; /* Posicionar burger */
+        display: block; 
+        position: absolute; 
         right: 1rem;
         top: 50%;
         transform: translateY(-50%);
         z-index: 1002;
     }
     .lang-toggle-btn {
-        right: 4rem; /* Mover botón de idioma a la izquierda del burger */
+        right: 4rem; /* Ajustado para estar a la izquierda del burger */
     }
     .main-nav {
-        /* Menú Móvil Oculto */
         position: fixed;
         top: 0;
         right: -100%; /* Oculto fuera de la pantalla */
@@ -867,15 +874,16 @@ section {
         background-color: var(--secondary-bg);
         padding: 5rem 2rem 2rem;
         transition: right 0.4s ease-out;
-        z-index: 1001; /* Debajo del burger, sobre el contenido */
+        z-index: 1001; 
         box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+        display: block; /* Asegurar que sea visible cuando .active */
     }
     .main-nav.active {
         right: 0; /* Mostrar menú */
     }
     .main-nav ul {
         flex-direction: column;
-        align-items: flex-start; /* Alinear a la izquierda */
+        align-items: flex-start; 
         gap: 1.5rem;
     }
     .main-nav .close-btn {
@@ -883,15 +891,25 @@ section {
     }
 
     .hero-attention {
-        padding: 6rem 0;
+        padding: 4rem 1rem; /* Reducir padding vertical y asegurar horizontal */
     }
-    .hero-title { font-size: 12vw; }
-    .choice-container {
-        flex-direction: column;
+    /* **CORRECCIÓN RESPONSIVA FUERTE:** Ajuste más agresivo para hero-title en pantallas pequeñas */
+    .hero-title { 
+        font-size: 9vw; /* Control más directo con vw */
+        letter-spacing: -1px; 
+        margin-bottom: 2rem;
+        padding: 0; /* Asegurar que el padding interno no empuje */
+     }
+    .hero-intro-text { font-size: 1.2rem; }
+     .choice-container {
         gap: var(--spacing-sm);
     }
     .choice-btn {
         width: 100%;
+        max-width: 300px; /* Limitar ancho del botón */
+        font-size: 0.95rem;
+        padding: 0.8rem 1.5rem;
+        white-space: normal; /* Permitir que el texto se rompa si es necesario */
     }
     .floating-profile {
         display: none; 
@@ -906,6 +924,8 @@ section {
         grid-template-columns: 1fr; 
         gap: var(--spacing-sm);
     }
+    .item-vertical { grid-column: span 1; grid-row: span 1;} /* Resetear spans */
+
     .footer-content-grid {
         grid-template-columns: 1fr;
         text-align: center;
@@ -919,20 +939,64 @@ section {
     .about-cta-links {
         flex-direction: column;
         gap: var(--spacing-sm);
-        align-items: center; /* Centrar botones en móvil */
+        align-items: center; 
     }
     .about-cta-links .btn {
-        width: 100%; /* Botones de ancho completo */
-        max-width: 300px; /* Límite para que no sean excesivamente anchos */
+        width: 100%; 
+        max-width: 300px; 
     }
+    .subtitle-text { font-size: 1rem; }
+    .section-title { font-size: 2rem; }
+    .lead-paragraph { font-size: 1rem; }
+
+    .highlight-line {
+        white-space: normal; /* Permitir que las palabras se rompan dentro de la línea destacada */
+        padding: 0.1em 0.2em; /* Reducir padding para evitar desbordamiento */
+    }
+}
+@media (max-width: 576px) {
+    /* Ajustes específicos para pantallas muy pequeñas */
+    .hero-title { 
+        font-size: 11vw; /* Ajuste más fino para pantallas muy estrechas */
+        letter-spacing: -0.5px;
+    }
+    .hero-intro-text {
+        font-size: 1rem;
+    }
+    .lang-toggle-btn {
+        right: 3.5rem; /* Ajuste para evitar solapamiento con el logo o el botón de menú */
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+    .menu-btn {
+        right: 0.5rem;
+    }
+    .choice-btn { 
+        min-width: unset; /* Permitir que los botones sean más estrechos */
+        font-size: 0.9rem;
+    }
+    .subtitle-text {
+        padding: 0 0.5rem; /* Asegurar padding en el subtítulo */
+    }
+}
+@media (max-width: 400px) {
+    .highlight-line {
+        display: block; /* Poner cada highlight en su propia línea */
+        margin: 0.2em auto; /* Centrar y espaciar */
+        width: fit-content; /* Ajustar ancho al contenido */
+    }
+     .choice-btn { min-width: auto; } /* Permitir que los botones sean más estrechos */
+     .hero-title {
+        font-size: 12vw; /* Último ajuste para asegurar que quepa */
+        letter-spacing: 0; /* Quitar letter-spacing negativo */
+     }
 }
 
 
 /* ================================================= */
 /* 11. ESTILOS DE BLOG (NO MODIFICADOS)             */
 /* ================================================= */
-/* Se mantienen aquí todos los estilos relacionados al blog (clases .blog-*, .modal-*, .tag-*)
-   para asegurar la consistencia y funcionalidad del blog. */
+/* ... (Todos los estilos del blog van aquí sin cambios) ... */
 
 .blog-search {
     position: relative;
@@ -942,29 +1006,35 @@ section {
 /* Estilos específicos para el body de la página del blog */
 .blog-page-body {
     background-color: var(--bg-color); /* Fondo oscuro consistente */
+    padding-top: 60px; /* Ajuste para el header fijo */
 }
 
 .blog-section {
-    padding-top: var(--spacing-lg); /* Más espacio arriba */
-    min-height: calc(100vh - 60px); /* Ajustado a la nueva altura del header */
+    padding-top: var(--spacing-lg); 
+    min-height: calc(100vh - 60px); 
     display: flex;
     flex-direction: column;
 }
 
 /* Ajustes menores al header del blog */
 .blog-section .section-header .section-title {
-    color: var(--text-color); /* Asegurar color de texto principal */
+    color: var(--text-color); 
 }
+.blog-section .section-header { /* Reutilizar estilo si se usa en blog */
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
 
 .search-input {
     width: 100%;
-    padding: 0.9rem 1.2rem 0.9rem 3.5rem; /* Más padding izquierdo */
-    border: 1px solid var(--secondary-bg); /* Borde sutil */
+    padding: 0.9rem 1.2rem 0.9rem 3.5rem; 
+    border: 1px solid var(--secondary-bg); 
     border-radius: 50px; 
     background: var(--secondary-bg);
     color: var(--text-color);
     font-size: 1rem;
-    box-shadow: none; /* Sin sombra por defecto */
+    box-shadow: none; 
     transition: var(--transition);
 }
 
@@ -976,7 +1046,7 @@ section {
 
 .search-icon {
     position: absolute;
-    left: 1.5rem; /* Ajustado */
+    left: 1.5rem; 
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-secondary);
@@ -1025,7 +1095,7 @@ section {
 /* Blog Post Grid & Card - Ajustados */
 .blog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Aumentado minmax */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
     gap: var(--spacing-md); 
     margin-bottom: var(--spacing-xl);
 }
@@ -1085,18 +1155,22 @@ section {
 .tag-tech {
     background-color: rgba(74, 144, 226, 0.2);
     color: var(--accent-color-dev);
+    border: 1px solid rgba(74, 144, 226, 0.3); /* Borde sutil */
 }
 .tag-philosophy {
     background-color: rgba(230, 210, 77, 0.2);
     color: var(--accent-color-stat);
+     border: 1px solid rgba(230, 210, 77, 0.3);
 }
 .tag-data {
     background-color: rgba(230, 131, 105, 0.2);
     color: var(--primary-color);
+     border: 1px solid rgba(230, 131, 105, 0.3);
 }
 .tag-ethics {
     background-color: rgba(150, 50, 150, 0.2); 
     color: #c568c5;
+     border: 1px solid rgba(150, 50, 150, 0.3);
 }
 
 
@@ -1145,13 +1219,14 @@ section {
     border-radius: 50px;
     font-size: 0.9rem;
     font-weight: 500;
+    cursor: pointer; /* Asegurar cursor */
 }
 
 .read-more-btn-card:hover {
     border-color: var(--primary-color);
     color: var(--primary-color);
     background: transparent;
-    transform: none; /* Sin transform */
+    transform: none; 
     box-shadow: none;
 }
 .read-more-btn-card i {
@@ -1168,25 +1243,25 @@ section {
     padding: 2rem;
     font-size: 1.2rem;
     color: var(--text-secondary);
-    display: none; /* Oculto por defecto si JS lo gestiona */
+    display: none; 
 }
-.loading.hidden { display: none; } /* Asegurar que hidden lo oculte */
+.loading.hidden { display: none; } 
 
 /* Newsletter Section (Cohesivo con el Contacto de la Home) */
 .newsletter-section {
     position: relative;
     text-align: center;
-    padding: var(--spacing-lg) var(--spacing-md); /* Ajuste padding */
+    padding: var(--spacing-lg) var(--spacing-md); 
     background: var(--secondary-bg);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
-    margin-top: var(--spacing-xl); /* Espacio arriba */
-    margin-bottom: var(--spacing-xl); /* Espacio abajo */
+    margin-top: var(--spacing-xl); 
+    margin-bottom: var(--spacing-xl); 
 }
 
 .newsletter-icon {
     font-size: 3.5rem; 
-    color: var(--accent-color-dev); /* Color del icono */
+    color: var(--accent-color-dev); 
     margin-bottom: 1rem;
 }
 .newsletter-section h3 {
@@ -1203,7 +1278,7 @@ section {
 
 .newsletter-form input[type="email"] {
     flex-grow: 1;
-    padding: 0.9rem 1.2rem; /* Aumentado padding */
+    padding: 0.9rem 1.2rem; 
     border: 1px solid #333;
     border-radius: 50px;
     font-size: 1rem;
@@ -1246,7 +1321,7 @@ section {
 
 .modal-overlay {
     position: absolute; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.85); /* Más oscuro */
+    background: rgba(0, 0, 0, 0.85); 
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
 }
@@ -1254,7 +1329,7 @@ section {
 .modal-container {
     position: relative;
     width: 95%; max-width: 950px; height: 90vh;
-    background: var(--secondary-bg); /* Fondo del modal */
+    background: var(--secondary-bg); 
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: var(--shadow-dark); 
@@ -1280,7 +1355,7 @@ section {
     border-radius: 50%;
     font-size: 1.2rem;
     cursor: pointer;
-    z-index: 10010; /* Encima del contenido */
+    z-index: 10010; 
     transition: var(--transition);
     display: flex; align-items: center; justify-content: center;
 }
@@ -1313,29 +1388,29 @@ section {
 }
 
 .modal-category {
-    padding: 0.4rem 1rem; /* Ajustado */
-    border-radius: 5px; /* Menos redondeado */
-    font-size: 0.8rem; /* Más pequeño */
+    padding: 0.4rem 1rem; 
+    border-radius: 5px; 
+    font-size: 0.8rem; 
     font-weight: 700;
     text-transform: uppercase;
     margin-bottom: 1rem;
     display: inline-block;
-    /* Colores se aplican con clases tag-* */
+    /* Colores se aplicarán con clases tag-* */
 }
 
 .modal-title {
-    font-size: 2.2rem; /* Ligeramente más pequeño */
+    font-size: 2.2rem; 
     margin-bottom: 0.8rem;
     line-height: 1.2;
     color: var(--text-color);
 }
 
 .modal-info {
-    display: flex; gap: 1.5rem; /* Menos gap */
+    display: flex; gap: 1.5rem; 
     color: var(--text-secondary);
-    font-size: 0.9rem; /* Más pequeño */
+    font-size: 0.9rem; 
     flex-wrap: wrap;
-    border-bottom: 1px solid #333; /* Borde oscuro */
+    border-bottom: 1px solid #333; 
     padding-bottom: 1rem;
     margin-bottom: 1.5rem;
 }
@@ -1343,9 +1418,9 @@ section {
 .modal-info i { color: var(--primary-color); margin-right: 0.3rem; }
 
 .modal-body {
-    line-height: 1.8; /* Mejor lectura */
+    line-height: 1.8; 
     font-size: 1.05rem;
-    color: var(--text-secondary); /* Texto del cuerpo */
+    color: var(--text-secondary); 
     margin-bottom: var(--spacing-lg);
 }
 
@@ -1406,11 +1481,11 @@ section {
 
 .share-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-.share-btn {
+.share-btn { /* Reutiliza .btn-secondary */
     padding: 0.6rem 1.2rem;
     border-radius: 5px;
     font-weight: 500;
-    font-size: 0.9rem; /* Más pequeño */
+    font-size: 0.9rem; 
 }
 
 /* Notification Styles */
@@ -1419,29 +1494,29 @@ section {
     bottom: -100px; 
     right: 2rem;
     background: var(--primary-color);
-    color: var(--bg-color); /* Contraste */
+    color: var(--bg-color); 
     padding: 1rem 1.5rem;
     border-radius: 8px;
     box-shadow: var(--shadow);
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    z-index: 10001; /* Encima del overlay */
+    z-index: 10001; 
     transition: bottom 0.3s ease;
 }
 
 .notification.show { bottom: 2rem; }
 
 /* Reading Progress Bar (Global y Modal) */
-.reading-progress-bar { /* Renombrado desde .reading-progress */
+.reading-progress-bar { 
     position: fixed;
     top: 60px; /* Debajo del header */
     left: 0;
-    width: 0%; /* Inicia en 0 */
+    width: 0%; 
     height: 4px;
     background-color: var(--primary-color);
-    z-index: 10001; /* Encima del header */
-    transition: width 0.1s linear; /* Suaviza el cambio */
+    z-index: 10001; 
+    transition: width 0.1s linear; 
 }
 
 
@@ -1475,11 +1550,12 @@ section {
 
 .fade-in { animation: fadeIn 0.5s ease forwards; }
 
-/* Reveal on Scroll (Se mantienen) */
+/* Reveal on Scroll */
 .reveal-initial {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform; /* Optimización */
 }
 .reveal.revealed {
     opacity: 1;
