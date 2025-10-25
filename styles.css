@@ -1,21 +1,37 @@
-/* Base & Reset */
+/* ================================================= */
+/* 1. VARIABLES GLOBALES Y RESET                     */
+/* ================================================= */
+
 :root {
-    --primary-color: #E68369;
+    /* Colores base */
+    --primary-color: #E68369; /* Naranja/Tierra - Acento Principal */
     --primary-dark: #d06e54;
-    --secondary-color: #131842;
-    --bg-color: #131842;
-    --text-color: #FBF6E2;
-    --text-secondary: #ECCEAE;
+    --accent-color-dev: #4A90E2; /* Azul - Acento Web Dev */
+    --accent-color-stat: #E6D24D; /* Amarillo Suave - Acento Data */
+    --bg-color: #121212; /* Fondo muy oscuro */
+    --secondary-bg: #1e1e1e; /* Fondo de tarjetas/contenedores */
+    --text-color: #F8F8F8;
+    --text-secondary: #AAAAAA;
+    
+    /* Fuentes */
+    --font-primary: 'Roboto', sans-serif;
+    --font-code: 'Space Mono', monospace;
+    
+    /* Diseño y Espaciado */
     --container-width: 1200px;
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
-    --spacing-lg: 3rem;
-    --spacing-xl: 5rem;
-    --border-radius: 8px;
-    --transition: all 0.3s ease;
-    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.15);
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+    --border-radius: 12px; /* Más redondeado */
+    --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --shadow-dark: 0 10px 40px rgba(0, 0, 0, 0.6);
+
+    /* Variables antiguas (mantener por si se usan en el blog) */
+    --secondary-color-old: #131842; /* Color secundario antiguo */
+    --shadow-light: 0 4px 20px rgba(0, 0, 0, 0.08); /* Sombra ligera antigua */
 }
 
 * {
@@ -29,14 +45,24 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-primary);
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
     min-height: 100vh;
-    padding-top: 80px;
+    padding-top: 60px; /* Altura del header fijo */
     margin: 0;
 }
+/* Añadir clase dark-mode por defecto si no existe */
+body:not(.dark-mode) {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+body.dark-mode {
+     background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
 
 a {
     text-decoration: none;
@@ -50,7 +76,10 @@ img {
     display: block;
 }
 
-/* Container */
+/* ================================================= */
+/* 2. UTILIDADES GENERALES                          */
+/* ================================================= */
+
 .container {
     width: 90%;
     max-width: var(--container-width);
@@ -58,613 +87,900 @@ img {
     padding: 0 var(--spacing-sm);
 }
 
-/* Buttons */
-.close-btn {
-    display: none;
+/* Tipografía */
+.highlight-color { color: var(--primary-color); }
+.accent-color-dev { color: var(--accent-color-dev); }
+.text-center { text-align: center; }
+.subtitle-text {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-lg);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.section-title {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color);
+}
+.lead-paragraph {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-secondary);
+}
+.small-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 1rem;
 }
 
-/* Show close button only when mobile nav is active */
-.main-nav.active .close-btn {
-    display: block;
-}
-
-/* For viewport widths below 768px (mobile) */
-@media (max-width: 767px) {
-    .main-nav.active .close-btn {
-        display: block;
-    }
-}
+/* Botones */
 .btn {
-    display: inline-block;
-    padding: 0.8rem 1.5rem;
-    border-radius: var(--border-radius);
-    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px; 
+    font-weight: 700;
     cursor: pointer;
-    transition: var(--transition);
     text-align: center;
     border: none;
     font-size: 1rem;
+    letter-spacing: 0.5px;
+    gap: 0.5rem;
+    text-transform: uppercase;
+    transition: var(--transition);
 }
 
 .btn-primary {
     background-color: var(--primary-color);
-    color: var(--text-color);
+    color: var(--bg-color); /* Contraste */
+    box-shadow: 0 5px 15px rgba(230, 131, 105, 0.4);
 }
 
 .btn-primary:hover {
     background-color: var(--primary-dark);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(230, 131, 105, 0.6);
 }
 
 .btn-secondary {
-    background-color: transparent;
-    border: 2px solid var(--primary-color);
+    background-color: var(--secondary-bg);
+    border: 1px solid var(--text-secondary);
     color: var(--text-color);
+    box-shadow: none;
 }
 
 .btn-secondary:hover {
-    background-color: var(--primary-color);
+    background-color: var(--text-secondary);
+    color: var(--bg-color);
     transform: translateY(-3px);
-    box-shadow: var(--shadow);
 }
 
+.btn-large {
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+}
+
+/* Botón Outline antiguo (por si se usa en blog) */
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--text-color); /* Usar text-color para contraste */
+    color: var(--text-color);
+}
+.btn-outline:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color); /* Invertir colores */
+}
+
+/* Botón Small antiguo (por si se usa en blog) */
 .btn-sm {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
 }
 
-.btn-outline {
-    background-color: transparent;
-    border: 1px solid var(--text-color);
-}
 
-.btn-outline:hover {
-    background-color: var(--text-color);
-    color: var(--secondary-color);
-}
+/* ================================================= */
+/* 3. HEADER Y NAVEGACIÓN (MINIMALISTA)              */
+/* ================================================= */
 
-/* Header */
 .header {
-    position: fixed; /* Hace que el header se quede fijo en la ventana */
-    top: 0;          /* Lo ancla a la parte superior */
+    position: fixed; 
+    top: 0;
     left: 0;
-    width: 100%;     /* Ocupa todo el ancho */
-    z-index: 1000;   /* Asegura que esté por encima de otros elementos */
-    background: var(--bg-color); /* Usar variable de fondo para consistencia */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacarlo */
-    transition: var(--transition);
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(18, 18, 18, 0.95); 
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    height: 60px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
-
+/* Efecto al hacer scroll */
 .header.scrolled {
-    padding: 0.8rem 0;
-    background-color: rgba(19, 24, 66, 0.98);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    background-color: rgba(30, 30, 30, 0.98); /* Ligeramente más claro al hacer scroll */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
 }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
+    position: relative; /* Para el posicionamiento absoluto del botón de idioma */
 }
 
 .logo a {
-    color: var(--primary-color);
     font-size: 1.8rem;
     font-weight: 700;
-    letter-spacing: 1px;
+    color: var(--primary-color);
+    font-family: var(--font-code);
 }
 
-.logo a:hover {
-    color: var(--text-color);
+.main-nav {
+    display: flex; /* Asegura visibilidad en desktop */
 }
-
-.menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-color);
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
 .main-nav ul {
     display: flex;
     list-style: none;
-    align-items: center;
     gap: 2rem;
+    align-items: center; /* Alinea verticalmente los items */
 }
 
 .main-nav ul li a {
-    color: var(--text-color);
-    font-weight: 500;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
     position: relative;
-    padding: 0.5rem 0;
+    padding: 0.2rem 0;
 }
 
+.main-nav ul li a:hover {
+    color: var(--text-color);
+}
+
+/* Subrayado activo/hover */
 .main-nav ul li a::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -2px; /* Ligeramente debajo */
     left: 0;
     width: 0;
     height: 2px;
     background-color: var(--primary-color);
-    transition: var(--transition);
+    transition: width 0.3s ease;
 }
-
 .main-nav ul li a:hover::after, 
 .main-nav ul li a.active::after {
     width: 100%;
 }
 
-.social-links {
-    display: flex;
-    gap: 1rem;
+.nav-blog-link {
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
 }
-
-.social-links a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--text-color);
-    transition: var(--transition);
-}
-
-.social-links a:hover {
+.nav-blog-link:hover {
     background-color: var(--primary-color);
-    transform: translateY(-3px);
+    color: var(--bg-color);
 }
 
-/* Hero Section */
-.hero {
-    padding: 8rem 0 5rem;
-    overflow: hidden;
+/* Botón de Menú Móvil */
+.menu-btn {
+    display: none; /* Oculto en desktop */
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1002;
 }
 
-.hero::before {
-    content: '';
+/* Contenedor Nav Móvil (aparece con JS) */
+.main-nav .close-btn {
+    display: none; /* Oculto por defecto */
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 10% 20%, rgba(60, 68, 119, 0.4) 0%, rgba(19, 24, 66, 0) 90%);
-    z-index: -1;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.8rem;
+    cursor: pointer;
 }
 
-.hero-container {
+
+/* ================================================= */
+/* 4. HERO SECTION - ENFOQUE DUAL FLOTANTE           */
+/* ================================================= */
+
+.hero-attention {
+    position: relative;
+    min-height: calc(100vh - 60px);
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    gap: 3rem;
+    overflow: hidden;
+    padding: var(--spacing-xl) 0;
+    text-align: center;
 }
 
-.hero-content {
-    flex: 1;
+.hero-content-wrapper {
+    z-index: 10;
+    position: relative;
+}
+
+.hero-intro-text {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
 }
 
 .hero-title {
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1.2;
+    font-size: 8vw; 
+    font-weight: 900;
+    line-height: 1.1;
     color: var(--text-color);
+    margin-bottom: 3rem;
+    letter-spacing: -3px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+@media (min-width: 1400px) { /* Límite superior para el tamaño */
+    .hero-title { font-size: 112px; }
 }
 
-.hero-subtitle {
-    font-size: 2rem;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
+.highlight-line {
+    display: inline-block;
+    padding: 0.1em 0.3em; /* Ajuste padding */
+    border-radius: 8px;
+    margin: 0 0.1em; /* Ajuste margen */
+    white-space: nowrap;
+    transition: var(--transition);
 }
 
-.hero-text {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 600px;
+.line-dev {
+    background-color: var(--accent-color-dev);
+    color: var(--bg-color);
 }
 
-.hero-cta {
-    display: flex;
-    gap: 1rem;
+.line-stat {
+    background-color: var(--accent-color-stat);
+    color: var(--bg-color);
 }
 
-.hero-image {
-    flex: 1;
+.choice-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 2rem;
 }
 
-.image-container {
-    position: relative;
-    width: 350px;
-    height: 350px;
+.choice-btn {
+    padding: 1rem 2.5rem;
+    border-radius: 50px; /* Redondeado */
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: var(--shadow);
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.choice-dev {
+    background-color: var(--accent-color-dev);
+    color: var(--bg-color);
+}
+
+.choice-stat {
+    background-color: var(--accent-color-stat);
+    color: var(--bg-color);
+}
+
+.choice-dev:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(74, 144, 226, 0.6);
+}
+
+.choice-stat:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(230, 210, 77, 0.6);
+}
+
+/* FOTO FLOTANTE */
+.floating-profile {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%) rotate(3deg); 
+    opacity: 0; 
+    visibility: hidden;
+    transition: opacity 1s ease 0.5s, transform 1s ease 0.5s; /* Añadido delay */
+    z-index: 5;
+    background-color: var(--secondary-bg);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm);
+    box-shadow: var(--shadow);
+    max-width: 250px;
+}
+
+.floating-profile.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) rotate(0deg); 
+}
+
+.floating-profile .image-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
     border-radius: 50%;
     overflow: hidden;
     border: 3px solid var(--primary-color);
-    box-shadow: var(--shadow-dark);
 }
 
 .profile-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition);
+    filter: grayscale(100%) contrast(110%); 
+    transition: filter 0.5s ease;
 }
 
-.profile-image:hover {
-    transform: scale(1.05);
+.floating-profile:hover .profile-image {
+    filter: grayscale(0%);
 }
 
-/* Section Styles */
+.floating-caption {
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+/* ================================================= */
+/* 5. ABOUT SECTION (GRID LIMPIO)                    */
+/* ================================================= */
 section {
     padding: var(--spacing-xl) 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05); 
 }
 
-.section-header {
-    text-align: center;
-    margin-bottom: var(--spacing-lg);
+.about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-lg);
+    max-width: var(--container-width);
+    margin: 0 auto;
 }
 
-.section-header h2 {
-    font-size: 2.5rem;
+.about-text-box {
+    padding: var(--spacing-md) 0;
+}
+.about-text-box p strong { /* Estilo para el texto en negrita */
     color: var(--primary-color);
-    margin-bottom: var(--spacing-xs);
-    position: relative;
-    display: inline-block;
+    font-weight: 700;
 }
 
-.section-line {
-    width: 80px;
-    height: 4px;
-    background-color: var(--primary-color);
-    margin: 0 auto;
-    margin-top: var(--spacing-xs);
-}
-
-/* About Section */
-.about-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.about-content p {
-    margin-bottom: var(--spacing-md);
-    font-size: 1.1rem;
-}
-
-.about-details {
+.about-details-box {
+    background-color: var(--secondary-bg);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.detail-item {
+.detail-group h4 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.detail-item i {
-    color: var(--primary-color);
+.detail-group i {
+    color: var(--accent-color-dev);
+    font-size: 1.3em; /* Iconos un poco más grandes */
+}
+.detail-group p {
+    color: var(--text-secondary);
 }
 
-.about-cta {
+.about-cta-links {
     display: flex;
-    gap: 1rem;
+    gap: var(--spacing-md);
     margin-top: var(--spacing-md);
 }
 
-/* Projects Section */
+/* ================================================= */
+/* 6. PROJECTS SECTION (BENTO STYLE)                 */
+/* ================================================= */
+
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    /* Usar bento-grid-modern para layout bento */
     gap: var(--spacing-md);
+    margin: 0 auto;
+}
+.bento-grid-modern { /* Estilo general bento grid */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.category-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: var(--secondary-bg);
+    color: var(--text-secondary);
+    border: 1px solid var(--secondary-bg);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.filter-btn:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.filter-btn.active {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(230, 131, 105, 0.4);
 }
 
 .project-card {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    transition: var(--transition);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow);
-}
-
-.project-image {
-    height: 200px;
-    overflow: hidden;
-}
-
-.project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-}
-
-.project-card:hover .project-image img {
-    transform: scale(1.1);
-}
-
-.project-content {
+    background-color: var(--secondary-bg);
     padding: var(--spacing-md);
-    flex: 1;
+    border-radius: var(--border-radius);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 1; /* Visible por defecto */
+    transform: scale(1);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.project-card.hidden { /* Clase para ocultar con JS */
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 25px rgba(230, 131, 105, 0.15);
 }
 
-.project-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: var(--spacing-xs);
-    color: var(--primary-color);
-}
-
-.project-description {
-    margin-bottom: var(--spacing-md);
-    flex: 1;
-}
-
-.project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: var(--spacing-md);
-}
-
-.project-tech span {
-    padding: 0.3rem 0.8rem;
-    background-color: rgba(230, 131, 105, 0.2);
-    border-radius: var(--border-radius);
+/* Estilos de tags para proyectos */
+.card-tag {
+    font-family: var(--font-code);
     font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+.tag-web {
+    background-color: rgba(74, 144, 226, 0.15);
+    color: var(--accent-color-dev);
+    border: 1px solid rgba(74, 144, 226, 0.3);
+}
+.tag-data {
+    background-color: rgba(230, 210, 77, 0.15);
+    color: var(--accent-color-stat);
+    border: 1px solid rgba(230, 210, 77, 0.3);
 }
 
-.project-links {
+.project-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+.project-summary {
+    color: var(--text-secondary);
+    flex-grow: 1;
+    margin-bottom: var(--spacing-md);
+}
+
+.card-footer {
     display: flex;
-    gap: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #333;
+    padding-top: 1rem;
+}
+.tech-stack {
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.card-link {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+.card-link i {
+    margin-left: 0.5rem;
 }
 
-.full-text {
-    display: none;
+/* Layout específico para el Bento Grid de proyectos */
+.projects-grid.bento-grid-modern .grid-item.large {
+    grid-column: span 2;
+}
+@media (max-width: 768px) { /* En móvil, todos ocupan 1 columna */
+    .projects-grid.bento-grid-modern .grid-item.large {
+        grid-column: span 1;
+    }
 }
 
-.short-text {
-    display: inline;
-}
 
-.read-more-btn {
-    background: none;
-    border: none;
-    color: #007bff;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    margin-left: 5px;
-}
+/* ================================================= */
+/* 7. SKILLS SECTION (BENTO GRID REAL)               */
+/* ================================================= */
 
-.read-more-btn:hover {
-    text-decoration: underline;
-}
-
-/* Skills Section */
-.skills-content {
-    max-width: 800px;
+.skills-grid.bento-grid-modern {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto; 
+    gap: var(--spacing-md);
+    max-width: 900px;
     margin: 0 auto;
 }
 
-.skills-categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-}
-
-.skills-category h3 {
-    font-size: 1.5rem;
-    margin-bottom: var(--spacing-md);
-    color: var(--primary-color);
-    text-align: center;
-}
-
-.skills-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: var(--spacing-sm);
-}
-
-.skill-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: var(--spacing-sm);
-    background-color: rgba(255, 255, 255, 0.05);
+.bento-item {
+    background-color: var(--secondary-bg);
     border-radius: var(--border-radius);
-    transition: var(--transition);
-}
-
-.skill-item:hover {
-    transform: translateY(-5px);
-    background-color: rgba(230, 131, 105, 0.2);
-}
-
-.skill-item i {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
-}
-
-/* Contact Section */
-.contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-lg);
-}
-
-.contact-info h3 {
-    font-size: 1.8rem;
-    margin-bottom: var(--spacing-sm);
-    color: var(--primary-color);
-}
-
-.contact-info p {
-    margin-bottom: var(--spacing-md);
-}
-
-.contact-details {
-    margin-bottom: var(--spacing-md);
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    margin-bottom: var(--spacing-sm);
-}
-
-.contact-item i {
-    color: var(--primary-color);
-    font-size: 1.2rem;
-}
-
-.contact-form form {
-    background-color: rgba(255, 255, 255, 0.05);
     padding: var(--spacing-md);
-    border-radius: var(--border-radius);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.form-group {
-    margin-bottom: var(--spacing-md);
+.bento-item:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow);
 }
 
-.form-group label {
+.bento-item h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.skill-list-bento {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+.skill-tag {
+    font-family: var(--font-code);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Tamaños específicos en el Bento Grid de Skills */
+.skills-grid .item-data {
+    grid-column: span 2; 
+    background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+}
+
+.skills-grid .item-vertical {
+    grid-row: span 2; 
+    background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+}
+
+/* Estilos de tags específicos para cada tipo de skill */
+.skills-grid .skill-tag {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.skills-grid .skill-tag.tag-dev {
+    background-color: rgba(74, 144, 226, 0.15);
+    color: var(--accent-color-dev);
+    border-color: rgba(74, 144, 226, 0.3);
+}
+.skills-grid .skill-tag.tag-data {
+    background-color: rgba(230, 131, 105, 0.15);
+    color: var(--primary-color);
+    border-color: rgba(230, 131, 105, 0.3);
+}
+.skills-grid .skill-tag.tag-soft {
+     background-color: rgba(150, 50, 150, 0.15); /* Morado suave */
+    color: #c568c5; /* Tono de morado */
+    border-color: rgba(150, 50, 150, 0.3);
+}
+
+/* ================================================= */
+/* 8. CONTACTO CTA Y FOOTER                            */
+/* ================================================= */
+
+.contact-cta {
+    background-color: var(--secondary-bg);
+    padding: var(--spacing-xl) 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer {
+    padding: var(--spacing-md) 0;
+    background-color: #0d0d0d;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+}
+
+.footer-logo-text {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.footer-info p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.footer-social h4, .footer-nav-links h4 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+.footer-social .social-links { /* Estilos específicos para los iconos sociales del footer */
+    display: flex;
+    gap: 1rem;
+}
+.footer-social .social-links a {
+    color: var(--text-secondary);
+    font-size: 1.4rem;
+}
+.footer-social .social-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.footer-nav-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav-links li a {
+    color: var(--text-secondary);
     display: block;
     margin-bottom: 0.5rem;
-    color: var(--text-color);
 }
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border-radius: var(--border-radius);
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--text-color);
-    font-family: inherit;
-    transition: var(--transition);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 5px rgba(230, 131, 105, 0.5);
-}
-
-.form-group textarea {
-    min-height: 150px;
-    resize: vertical;
-}
-
-.form-submit {
-    width: 100%;
-}
-
-/* Footer */
-.footer {
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: var(--spacing-md) 0;
-    text-align: center;
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-sm);
-}
-
-.footer-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
+.footer-nav-links li a:hover {
     color: var(--primary-color);
-    margin-bottom: var(--spacing-sm);
+    transform: translateX(5px);
 }
 
-.footer-nav {
-    margin-bottom: var(--spacing-sm);
+/* ================================================= */
+/* 9. SELECTOR DE IDIOMA                             */
+/* ================================================= */
+
+.lang-toggle-btn {
+    position: absolute;
+    top: 50%;
+    /* Ajusta 'right' para que no colisione con el menú móvil si se implementa */
+    right: 4rem; 
+    transform: translateY(-50%);
+    background: var(--secondary-bg);
+    color: var(--text-color);
+    border: 1px solid var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 1001; /* Sobre la nav */
+    transition: var(--transition);
+    font-family: var(--font-code);
 }
 
-.footer-nav ul {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
+.lang-toggle-btn:hover {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    border-color: var(--primary-color);
+    transform: translateY(-50%) scale(1.05);
 }
 
-.footer-social {
-    margin-bottom: var(--spacing-sm);
+/* ================================================= */
+/* 10. RESPONSIVE GENERAL                            */
+/* ================================================= */
+
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    .floating-profile {
+        right: 2%;
+        max-width: 200px;
+    }
+    .skills-grid.bento-grid-modern {
+        grid-template-columns: 1fr 1fr;
+    }
+    .item-data {
+        grid-column: span 1;
+    }
+    .item-vertical {
+        grid-row: span 1;
+    }
+    .footer-content-grid {
+        grid-template-columns: 1fr; /* Apilar en tablet */
+        text-align: center;
+    }
+    .footer-social .social-links {
+        justify-content: center;
+    }
 }
 
-.footer-social .social-links {
-    justify-content: center;
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px; /* Ajusta si la altura del header cambia */
+    }
+    .header {
+        /* No centrar, mantener logo a la izquierda, burger a la derecha */
+        /* justify-content: center; */ 
+    }
+     .header-container {
+        position: relative; /* Asegurar posicionamiento correcto del botón */
+    }
+    .menu-btn {
+        display: block; /* Mostrar burger */
+        position: absolute; /* Posicionar burger */
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1002;
+    }
+    .lang-toggle-btn {
+        right: 4rem; /* Mover botón de idioma a la izquierda del burger */
+    }
+    .main-nav {
+        /* Menú Móvil Oculto */
+        position: fixed;
+        top: 0;
+        right: -100%; /* Oculto fuera de la pantalla */
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--secondary-bg);
+        padding: 5rem 2rem 2rem;
+        transition: right 0.4s ease-out;
+        z-index: 1001; /* Debajo del burger, sobre el contenido */
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    }
+    .main-nav.active {
+        right: 0; /* Mostrar menú */
+    }
+    .main-nav ul {
+        flex-direction: column;
+        align-items: flex-start; /* Alinear a la izquierda */
+        gap: 1.5rem;
+    }
+    .main-nav .close-btn {
+        display: block; /* Mostrar botón de cerrar */
+    }
+
+    .hero-attention {
+        padding: 6rem 0;
+    }
+    .hero-title { font-size: 12vw; }
+    .choice-container {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    .choice-btn {
+        width: 100%;
+    }
+    .floating-profile {
+        display: none; 
+    }
+    .projects-grid {
+         grid-template-columns: 1fr;
+    }
+    .project-card.large {
+        grid-column: span 1;
+    }
+    .skills-grid.bento-grid-modern {
+        grid-template-columns: 1fr; 
+        gap: var(--spacing-sm);
+    }
+    .footer-content-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-social, .footer-nav-links {
+        text-align: center;
+    }
+     .footer-social .social-links {
+        justify-content: center;
+    }
+    .about-cta-links {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: center; /* Centrar botones en móvil */
+    }
+    .about-cta-links .btn {
+        width: 100%; /* Botones de ancho completo */
+        max-width: 300px; /* Límite para que no sean excesivamente anchos */
+    }
 }
 
-.copyright {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
-}
 
+/* ================================================= */
+/* 11. ESTILOS DE BLOG (NO MODIFICADOS)             */
+/* ================================================= */
+/* Se mantienen aquí todos los estilos relacionados al blog (clases .blog-*, .modal-*, .tag-*)
+   para asegurar la consistencia y funcionalidad del blog. */
 
 .blog-search {
     position: relative;
-    max-width: 600px; /* Aumento para un mejor input */
-    margin: 2rem auto 2.5rem; /* Margen superior e inferior más generoso */
+    max-width: 600px; 
+    margin: 2rem auto 2.5rem; 
+}
+/* Estilos específicos para el body de la página del blog */
+.blog-page-body {
+    background-color: var(--bg-color); /* Fondo oscuro consistente */
 }
 
 .blog-section {
-    padding-top: 1rem; /* Si necesitas espacio inicial, mantenlo. Si no, puedes quitarlo. */
-    min-height: calc(100vh - 80px); /* 100vh menos la altura del header (80px) */
-    display: flex; /* Esto ayuda a asegurar que los hijos se distribuyan */
+    padding-top: var(--spacing-lg); /* Más espacio arriba */
+    min-height: calc(100vh - 60px); /* Ajustado a la nueva altura del header */
+    display: flex;
     flex-direction: column;
+}
+
+/* Ajustes menores al header del blog */
+.blog-section .section-header .section-title {
+    color: var(--text-color); /* Asegurar color de texto principal */
 }
 
 .search-input {
     width: 100%;
-    padding: 0.9rem 1.2rem 0.9rem 3rem; /* Más espacio para ícono y comodidad */
-    border: 1px solid var(--secondary-color); /* Borde más sutil */
-    border-radius: 30px; /* Más redondeado */
-    background: var(--secondary-color);
+    padding: 0.9rem 1.2rem 0.9rem 3.5rem; /* Más padding izquierdo */
+    border: 1px solid var(--secondary-bg); /* Borde sutil */
+    border-radius: 50px; 
+    background: var(--secondary-bg);
     color: var(--text-color);
-    font-size: 1.05rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra ligera por defecto */
+    font-size: 1rem;
+    box-shadow: none; /* Sin sombra por defecto */
     transition: var(--transition);
 }
 
 .search-input:focus {
     outline: none;
     border-color: var(--primary-color);
-    background: var(--bg-color);
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3); /* Anillo de enfoque (ring) */
+    box-shadow: 0 0 0 2px rgba(230, 131, 105, 0.4); 
 }
 
 .search-icon {
     position: absolute;
-    left: 1.2rem; /* Ajustado para el nuevo padding */
+    left: 1.5rem; /* Ajustado */
     top: 50%;
     transform: translateY(-50%);
     color: var(--text-secondary);
-    pointer-events: none; /* Asegura que el ícono no bloquee el click al input */
+    pointer-events: none; 
     transition: color 0.3s ease;
 }
 
@@ -672,23 +988,23 @@ section {
     color: var(--primary-color);
 }
 
-/* Blog Categories - Nuevo/Mejorado */
+/* Blog Categories - Ajustados para el nuevo tema */
 .blog-categories {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: var(--spacing-lg);
     flex-wrap: wrap;
 }
 
-.category-btn {
+.category-btn { /* Reutiliza .filter-btn del portafolio */
     padding: 0.6rem 1.5rem;
-    border: 2px solid var(--secondary-color);
-    border-radius: 25px;
-    background: var(--secondary-color);
+    border: 1px solid var(--secondary-bg);
+    border-radius: 50px;
+    background: var(--secondary-bg);
     color: var(--text-secondary);
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
     transition: var(--transition);
     white-space: nowrap;
@@ -703,39 +1019,41 @@ section {
     background: var(--primary-color);
     color: var(--bg-color);
     border-color: var(--primary-color);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 5px 15px rgba(230, 131, 105, 0.3);
 }
 
-/* Blog Post Grid & Card - Mejorado */
+/* Blog Post Grid & Card - Ajustados */
 .blog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2.5rem; /* Aumento del espaciado */
-    margin-bottom: 4rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Aumentado minmax */
+    gap: var(--spacing-md); 
+    margin-bottom: var(--spacing-xl);
 }
 
 .blog-post {
-    background: var(--bg-color);
+    background: var(--secondary-bg);
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: var(--shadow-light); /* Aplicar sombra ligera */
+    box-shadow: var(--shadow); 
     display: flex;
     flex-direction: column;
     opacity: 1;
     transform: translateY(0);
-    transition: var(--transition), box-shadow 0.3s ease; /* Transición también para sombra */
+    transition: var(--transition), box-shadow 0.3s ease; 
     cursor: pointer;
+    border: 2px solid transparent;
 }
 
 .blog-post:hover {
-    box-shadow: var(--shadow-dark); /* Sombra más pronunciada al pasar el ratón */
-    transform: translateY(-5px); /* Efecto de "levantamiento" */
+    box-shadow: var(--shadow-dark); 
+    transform: translateY(-5px); 
+    border-color: var(--primary-color);
 }
 
 .post-image {
     position: relative;
     overflow: hidden;
-    height: 200px; /* Altura fija para uniformidad */
+    height: 200px; 
 }
 
 .post-image img {
@@ -743,37 +1061,54 @@ section {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: var(--transition);
+    transition: transform 0.5s ease;
 }
 
 .blog-post:hover .post-image img {
-    transform: scale(1.08); /* Aumento ligeramente el zoom */
+    transform: scale(1.05); 
 }
 
 .post-category {
     position: absolute;
     top: 1rem;
     left: 1rem;
-    background: rgba(102, 126, 234, 0.9); /* Usar Primary Color con opacidad */
-    color: white;
-    padding: 0.3rem 1rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    font-family: var(--font-code);
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+    font-size: 0.75rem;
     font-weight: 700;
-    text-transform: uppercase;
     z-index: 2;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Colores se aplicarán con clases tag-* */
 }
+
+/* Colores de categorías (Usando los acentos principales) */
+.tag-tech {
+    background-color: rgba(74, 144, 226, 0.2);
+    color: var(--accent-color-dev);
+}
+.tag-philosophy {
+    background-color: rgba(230, 210, 77, 0.2);
+    color: var(--accent-color-stat);
+}
+.tag-data {
+    background-color: rgba(230, 131, 105, 0.2);
+    color: var(--primary-color);
+}
+.tag-ethics {
+    background-color: rgba(150, 50, 150, 0.2); 
+    color: #c568c5;
+}
+
 
 .post-content {
     padding: 1.5rem;
-    flex-grow: 1; /* Para que el contenido ocupe el espacio restante */
+    flex-grow: 1; 
     display: flex;
     flex-direction: column;
 }
 
 .post-content h3 {
-    font-size: 1.35rem; /* Ligeramente más grande */
+    font-size: 1.35rem; 
     margin-bottom: 0.8rem;
     line-height: 1.4;
     color: var(--text-color);
@@ -781,211 +1116,149 @@ section {
 
 .post-meta {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     color: var(--text-secondary);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     margin-bottom: 1rem;
 }
 
 .post-meta i {
     color: var(--primary-color);
-    margin-right: 0.3rem;
+    margin-right: 0.4rem;
 }
 
 .post-excerpt {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--spacing-sm);
     color: var(--text-secondary);
     line-height: 1.6;
-    flex-grow: 1; /* Empuja el botón "Read More" hacia abajo */
+    flex-grow: 1; 
 }
 
-.read-more {
-    display: inline-flex;
-    align-items: center;
+/* Botón Leer Más de la tarjeta */
+.read-more-btn-card {
+    background: none;
+    border: 1px solid var(--text-secondary);
+    color: var(--text-secondary);
+    align-self: flex-start; /* Alinear a la izquierda */
+    margin-top: auto; /* Empujar al final */
+    padding: 0.4rem 1rem; /* Más pequeño */
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.read-more-btn-card:hover {
+    border-color: var(--primary-color);
     color: var(--primary-color);
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.3s ease;
+    background: transparent;
+    transform: none; /* Sin transform */
+    box-shadow: none;
 }
-
-.read-more:hover {
-    color: #4a5dca; /* Tono más oscuro de Primary al pasar el ratón */
-}
-
-.read-more i {
-    margin-left: 0.5rem;
+.read-more-btn-card i {
+    margin-left: 0.4rem;
     transition: transform 0.3s ease;
 }
-
-.read-more:hover i {
-    transform: translateX(3px); /* Pequeño deslizamiento */
+.read-more-btn-card:hover i {
+     transform: translateX(3px);
 }
 
-/* Loading State */
+/* Loading State (Se mantiene) */
 .loading {
     text-align: center;
     padding: 2rem;
     font-size: 1.2rem;
     color: var(--text-secondary);
-    display: none !important;
-    visibility: hidden;
+    display: none; /* Oculto por defecto si JS lo gestiona */
 }
+.loading.hidden { display: none; } /* Asegurar que hidden lo oculte */
 
-.loading::after {
-    content: " . . ."; /* Cambio para mejor visualización */
-    display: inline-block;
-    width: 20px; /* Asegurar espacio */
-    overflow: hidden;
-    animation: dots 1.5s steps(3, end) infinite; /* Ajustado a 3 puntos */
-}
-
-@keyframes dots {
-    0% { content: "."; }
-    33% { content: ".."; }
-    66%, 100% { content: "..."; }
-}
-
-/* Newsletter Subscription - Mejorado */
+/* Newsletter Section (Cohesivo con el Contacto de la Home) */
 .newsletter-section {
     position: relative;
     text-align: center;
-    padding: 4rem 2rem; /* Padding más amplio */
-    background: var(--secondary-color);
+    padding: var(--spacing-lg) var(--spacing-md); /* Ajuste padding */
+    background: var(--secondary-bg);
     border-radius: var(--border-radius);
-    margin-top: 4rem;
-    box-shadow: var(--shadow-light);
-}
-
-.newsletter-section h3 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-color);
-}
-
-.newsletter-section p {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow);
+    margin-top: var(--spacing-xl); /* Espacio arriba */
+    margin-bottom: var(--spacing-xl); /* Espacio abajo */
 }
 
 .newsletter-icon {
-    font-size: 3.5rem; /* Más grande */
-    color: var(--primary-color);
+    font-size: 3.5rem; 
+    color: var(--accent-color-dev); /* Color del icono */
     margin-bottom: 1rem;
+}
+.newsletter-section h3 {
+    color: var(--text-color);
 }
 
 .newsletter-form {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
 .newsletter-form input[type="email"] {
     flex-grow: 1;
-    padding: 0.8rem 1.2rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    padding: 0.9rem 1.2rem; /* Aumentado padding */
+    border: 1px solid #333;
+    border-radius: 50px;
     font-size: 1rem;
     background: var(--bg-color);
     color: var(--text-color);
-    transition: border-color 0.3s ease;
 }
-
 .newsletter-form input[type="email"]:focus {
-    outline: none;
+     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 0 0 2px rgba(230, 131, 105, 0.4);
 }
 
 .newsletter-form .btn-primary {
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.newsletter-form .btn-primary:hover {
-    background: #4a5dca; /* Tono más oscuro de Primary al pasar el ratón */
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-}
-
-.newsletter-privacy {
-    margin-top: 1.5rem;
-    color: var(--text-secondary);
-    font-size: 0.85rem;
+    padding: 0.9rem 1.5rem;
 }
 
 .newsletter-privacy i {
-    margin-right: 0.4rem;
-    color: var(--primary-color);
+    color: var(--accent-color-dev);
 }
 
 /*
  * ========================================
- * ESTILOS DEL MODAL (Mejorado)
+ * ESTILOS DEL MODAL (Se mantienen)
  * ========================================
  */
 
 .blog-modal {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0; width: 100%; height: 100%;
     z-index: 9999;
-    display: flex; /* Usar flexbox para centrar */
-    justify-content: center;
-    align-items: center;
-    visibility: hidden; /* Mejor control que display: none */
-    opacity: 0;
+    display: flex; justify-content: center; align-items: center;
+    visibility: hidden; opacity: 0;
     transition: visibility 0s 0.3s, opacity 0.3s ease;
 }
 
 .blog-modal.active {
-    visibility: visible;
-    opacity: 1;
+    visibility: visible; opacity: 1;
     transition: visibility 0s 0s, opacity 0.3s ease;
 }
 
 .modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8); /* Oscurecido ligeramente */
-    -webkit-backdrop-filter: blur(8px); /* Safari/iOS support */
-    backdrop-filter: blur(8px); /* Blur más pronunciado */
-    animation: overlayFadeIn 0.3s ease;
-}
-
-@keyframes overlayFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    position: absolute; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Más oscuro */
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
 
 .modal-container {
     position: relative;
-    width: 95%;
-    max-width: 950px; /* Aumentado el ancho máximo */
-    height: 90vh;
-    background: var(--bg-color);
+    width: 95%; max-width: 950px; height: 90vh;
+    background: var(--secondary-bg); /* Fondo del modal */
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.7); /* Sombra más fuerte */
+    box-shadow: var(--shadow-dark); 
     z-index: 10000;
-    /* Ajustado el uso de keyframes con .active */
 }
 
 .blog-modal.active .modal-container {
@@ -993,394 +1266,226 @@ section {
 }
 
 @keyframes modalSlideIn {
-    from {
-        transform: scale(0.95); /* Nuevo efecto de escalado */
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+    from { transform: scale(0.95) translateY(10px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
 }
 
 .modal-close {
-    /* Mantiene estilos, solo se cambia el hover para ser más atractivo */
+    position: absolute;
+    top: 15px; right: 15px;
     background: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10010; /* Encima del contenido */
     transition: var(--transition);
+    display: flex; align-items: center; justify-content: center;
 }
 
 .modal-close:hover {
-    transform: rotate(180deg) scale(1.1); /* Rotación completa y escala */
-    background: #ff4757;
+    background: var(--accent-color-dev);
+    transform: rotate(90deg) scale(1.1); 
 }
 
 .modal-content {
     height: 100%;
     overflow-y: auto;
-    padding: 3rem; /* Más padding para contenido */
-    scroll-behavior: smooth; /* Desplazamiento suave */
+    padding: var(--spacing-lg); 
+    scroll-behavior: smooth; 
 }
 
-/* Scrollbar Styles - Mantenido y consistente */
+/* Scrollbar Styles */
+.modal-content::-webkit-scrollbar { width: 8px; }
+.modal-content::-webkit-scrollbar-track { background: var(--bg-color); }
+.modal-content::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 4px; }
+.modal-content::-webkit-scrollbar-thumb:hover { background: var(--primary-dark); }
 
-.modal-header {
-    margin-bottom: 2.5rem; /* Más espacio */
-}
+.modal-header { margin-bottom: var(--spacing-md); }
 
 .modal-image {
-    width: 100%;
-    max-height: 400px; /* Máx. altura para desktop */
+    width: 100%; max-height: 400px; 
     object-fit: cover;
     border-radius: var(--border-radius);
-    margin-bottom: 2rem;
+    margin-bottom: var(--spacing-md);
 }
 
 .modal-category {
-    background: var(--primary-color);
-    padding: 0.4rem 1.2rem;
-    border-radius: 20px; /* Más redondeado */
-    font-size: 0.9rem;
+    padding: 0.4rem 1rem; /* Ajustado */
+    border-radius: 5px; /* Menos redondeado */
+    font-size: 0.8rem; /* Más pequeño */
     font-weight: 700;
-    color: white;
     text-transform: uppercase;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    /* Colores se aplican con clases tag-* */
 }
 
 .modal-title {
-    font-size: 2.5rem; /* Título más prominente */
-    margin-bottom: 1rem;
+    font-size: 2.2rem; /* Ligeramente más pequeño */
+    margin-bottom: 0.8rem;
     line-height: 1.2;
     color: var(--text-color);
 }
 
 .modal-info {
-    display: flex;
-    gap: 2rem; /* Más espacio entre elementos */
+    display: flex; gap: 1.5rem; /* Menos gap */
     color: var(--text-secondary);
-    font-size: 1rem; /* Ligeramente más grande */
+    font-size: 0.9rem; /* Más pequeño */
     flex-wrap: wrap;
-    border-bottom: 1px solid var(--secondary-color); /* Separador sutil */
+    border-bottom: 1px solid #333; /* Borde oscuro */
     padding-bottom: 1rem;
-}
-
-.modal-info i {
-    margin-right: 0.4rem;
-    color: var(--primary-color);
-}
-
-.modal-body {
-    line-height: 1.9; /* Mayor interlineado para mejor legibilidad */
-    font-size: 1.05rem;
-    margin-bottom: 3rem;
-}
-
-.modal-body h2 {
-    font-size: 1.8rem; /* Más prominente */
-    margin: 3rem 0 1.5rem;
-    color: var(--primary-color);
-    border-left: 4px solid var(--primary-color); /* Estilo de borde */
-    padding-left: 1rem;
-}
-
-.modal-body h3 {
-    font-size: 1.4rem;
-    margin: 2rem 0 1rem;
-    color: var(--text-color);
-}
-
-.modal-body p {
     margin-bottom: 1.5rem;
 }
 
-.modal-body ul, .modal-body ol { /* Añadida lista ordenada */
-    margin: 1.5rem 0 1.5rem 2rem;
-    padding-left: 0;
+.modal-info i { color: var(--primary-color); margin-right: 0.3rem; }
+
+.modal-body {
+    line-height: 1.8; /* Mejor lectura */
+    font-size: 1.05rem;
+    color: var(--text-secondary); /* Texto del cuerpo */
+    margin-bottom: var(--spacing-lg);
 }
 
-.modal-body li {
-    margin-bottom: 0.7rem;
+.modal-body h2 {
+    font-size: 1.6rem; 
+    margin: 2rem 0 1rem;
+    color: var(--primary-color);
+    border-left: 3px solid var(--primary-color); 
+    padding-left: 0.8rem;
+}
+
+.modal-body h3 {
+    font-size: 1.3rem;
+    margin: 1.5rem 0 0.8rem;
+    color: var(--text-color);
+}
+
+.modal-body p { margin-bottom: 1.2rem; }
+
+.modal-body ul, .modal-body ol { 
+    margin: 1.2rem 0 1.2rem 1.5rem;
     padding-left: 0.5rem;
 }
 
-.modal-body strong {
-    color: var(--primary-color);
-    font-weight: 700;
-}
+.modal-body li { margin-bottom: 0.6rem; padding-left: 0.3rem; }
 
-/* Tags, Share y Notification - Mejorados */
-.modal-tags {
-    margin-bottom: 2.5rem;
-}
-
-.modal-tags h4 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
+.modal-body strong { color: var(--primary-color); font-weight: 700; }
+.modal-body blockquote {
+    border-left: 3px solid var(--primary-color);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
     color: var(--text-color);
 }
+
+
+/* Tags, Share y Notification - Ajustados */
+.modal-tags { margin-top: var(--spacing-md); }
+.modal-tags h4 { font-size: 1rem; color: var(--text-color); margin-bottom: 0.8rem; }
+
+.tags-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
 .tag {
-    background: var(--secondary-color);
-    padding: 0.4rem 1.1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
+    font-family: var(--font-code);
+    padding: 0.4rem 1rem;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    /* Colores aplicados por clase tag-* */
 }
-
-.tag:hover {
-    background: var(--primary-color);
-    color: white;
-}
+.tag:hover { opacity: 0.8; }
 
 .modal-share {
-    border-top: 1px solid #e0e0e0; /* Borde más sutil */
-    padding-top: 2rem;
-    margin-top: 2rem;
+    border-top: 1px solid #333; 
+    padding-top: var(--spacing-md);
+    margin-top: var(--spacing-md);
 }
+.modal-share h4 { font-size: 1rem; color: var(--text-color); margin-bottom: 0.8rem; }
 
-.modal-share h4 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    color: var(--text-color);
-}
+.share-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 .share-btn {
-    /* Manteniendo estilos base */
-    background: var(--secondary-color);
-}
-
-.share-btn:hover {
-    background: var(--primary-color);
-    color: white; /* Asegurar que el ícono sea blanco al pasar el ratón */
-    transform: translateY(-3px); /* Efecto de levantamiento más notorio */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.share-btn i {
-    font-size: 1.1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 0.9rem; /* Más pequeño */
 }
 
 /* Notification Styles */
 .notification {
-    /* Mantenido */
     position: fixed;
-    bottom: -100px; /* Asegura que esté oculta fuera de la pantalla por defecto */
+    bottom: -100px; 
     right: 2rem;
-    left: initial; /* Asegura que solo se fije a la derecha en desktop */
     background: var(--primary-color);
-    color: white;
+    color: var(--bg-color); /* Contraste */
     padding: 1rem 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow);
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    z-index: 10000;
+    z-index: 10001; /* Encima del overlay */
     transition: bottom 0.3s ease;
 }
 
-.notification.show {
-    bottom: 2rem; /* El mensaje sube desde abajo */
+.notification.show { bottom: 2rem; }
+
+/* Reading Progress Bar (Global y Modal) */
+.reading-progress-bar { /* Renombrado desde .reading-progress */
+    position: fixed;
+    top: 60px; /* Debajo del header */
+    left: 0;
+    width: 0%; /* Inicia en 0 */
+    height: 4px;
+    background-color: var(--primary-color);
+    z-index: 10001; /* Encima del header */
+    transition: width 0.1s linear; /* Suaviza el cambio */
 }
 
-/* Reading Progress Bar */
-.reading-progress {
-    height: 4px; /* Un poco más grueso */
-}
 
-/* Responsive Styles */
-@media (max-width: 992px) {
-    .hero-title {
-        font-size: 3.5rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.8rem;
-    }
-
-    .contact-content {
-        grid-template-columns: 1fr;
-    }
-}
-
+/* Responsive Styles Blog (Se mantienen) */
 @media (max-width: 768px) {
-    .hero-container {
-        flex-direction: column-reverse;
-        text-align: center;
-    }
-
-    .hero-cta {
-        justify-content: center;
-    }
-
-    .hero-title {
-        font-size: 3rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.5rem;
-    }
-
-    .hero-text {
-        margin: 0 auto var(--spacing-md);
-    }
-
-    .menu-btn {
-        display: block;
-    }
-
-    .main-nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100vh;
-        background-color: var(--secondary-color);
-        padding: 5rem 2rem;
-        transition: var(--transition);
-        z-index: 99;
-    }
-
-    .main-nav.active {
-        right: 0;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .main-nav .close-btn {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: none;
-        border: none;
-        color: var(--text-color);
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-
-    .about-details {
-        flex-direction: column;
-    }
-
-    .about-cta {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .about-cta .btn {
-        width: 100%;
-    }
-
-    .projects-grid {
+    .blog-grid {
         grid-template-columns: 1fr;
     }
 
-    .skills-categories {
-        grid-template-columns: 1fr;
+    .modal-content {
+        padding: 2rem 1.5rem;
     }
 }
-
 @media (max-width: 576px) {
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.2rem;
-    }
-
-    .section-header h2 {
-        font-size: 2rem;
-    }
-
-    .image-container {
-        width: 250px;
-        height: 250px;
-    }
-
-    .project-image {
-        height: 180px;
+    .newsletter-form {
+        flex-direction: column;
     }
 }
 
-/* Tema oscuro opcional */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #1a1a1a;
-                --secondary-color: #2c2c2c;
-                --text-color: #ffffff;
-                --text-secondary: #aaaaaa;
-            }
-        }
 
-/* Animations */
+/* Tema oscuro opcional (Se mantiene) */
+@media (prefers-color-scheme: dark) {
+    /* No es necesario si el dark-mode es el por defecto */
+}
+
+/* Animations (Se mantienen) */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.fade-in {
-    animation: fadeIn 0.5s ease forwards;
-}
+.fade-in { animation: fadeIn 0.5s ease forwards; }
 
-/* Dark mode toggle */
-.dark-mode-toggle {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 90;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-}
-
-.dark-mode-toggle:hover {
-    transform: scale(1.1);
-}
-
-/* Scroll to top button */
-.scroll-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 6rem;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 90;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
+/* Reveal on Scroll (Se mantienen) */
+.reveal-initial {
     opacity: 0;
-    visibility: hidden;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-
-.scroll-top.visible {
+.reveal.revealed {
     opacity: 1;
-    visibility: visible;
+    transform: translateY(0);
 }
 
-.scroll-top:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-5px);
-}
+/* ================================================= */
+/* FIN DE ESTILOS DE BLOG                           */
+/* ================================================= */
