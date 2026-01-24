@@ -322,6 +322,7 @@ const translations = {
         'tag_js_logic': 'Lógica JavaScript',
         'project_demo_btn': 'Ver Page', // Añadido
         'project_code_btn': 'Ver Código', // Añadido
+        'sansu_journal_summary': 'Blog interactivo creado con TypeScript con funcionalidades avanzadas: reproducción de audios con transcripciones, visualización de videos y visualización de PDF. Diseño profesional, responsive y centrado en la experiencia del usuario.',
         // Sección Skills
         'skills_title': 'Skills & Expertise',
         'skill_data_title': 'Data & Statistics',
@@ -341,7 +342,7 @@ const translations = {
         'contact_small_text': 'o conéctate conmigo en LinkedIn y GitHub.',
         // Footer
         'footer_role': 'Software Developer & Data Analyst',
-        'footer_copyright': '© 2025 Sansu Inc. Todos los derechos reservados.',
+        'footer_copyright': '© 2026 Sansu Inc. Todos los derechos reservados.',
         'footer_connect': 'Conecta',
         'footer_explore': 'Explorar',
         // Blog Specific (Added)
@@ -413,6 +414,7 @@ const translations = {
         'tag_js_logic': 'JavaScript Logic',
         'project_demo_btn': 'View Page', // Added
         'project_code_btn': 'View Code', // Added
+        'sansu_journal_summary': 'Interactive blog created with TypeScript featuring advanced functionalities: audio playback with transcriptions, video visualization, and PDF viewing. Professional design, responsive, and user-centered.',
         // Sección Skills
         'skills_title': 'Skills & Expertise',
         'skill_data_title': 'Data & Statistics',
@@ -432,7 +434,7 @@ const translations = {
         'contact_small_text': 'or connect with me on LinkedIn and GitHub.',
         // Footer
         'footer_role': 'Software Developer & Data Analyst',
-        'footer_copyright': '© 2025 Sansu Inc. All rights reserved.',
+        'footer_copyright': '© 2026 Sansu Inc. All rights reserved.',
         'footer_connect': 'Connect',
         'footer_explore': 'Explore',
         // Blog Specific (Added)

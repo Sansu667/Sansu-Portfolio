@@ -18,9 +18,7 @@
     <header class="header">
         <div class="container header-container">
             <h1 class="logo"><a href="index.html">Santez</a></h1>
-            
-            <button class="lang-toggle-btn" id="langToggleBtn" aria-label="Toggle language to English">ES / EN</button>
-
+        
             <nav class="main-nav">
                 <ul>
                     <li><a href="#home" class="active" data-key="nav_home">Inicio</a></li>
@@ -28,9 +26,12 @@
                     <li><a href="#projects" data-key="nav_projects">Proyectos</a></li>
                     <li><a href="#skills" data-key="nav_skills">Habilidades</a></li>
                     <li><a href="#contact" data-key="nav_contact">Contacto</a></li>
-                    <li><a href="blog.html" class="nav-blog-link" data-key="nav_blog">Blog</a></li>
+                    <!--<li><a href="blog.html" class="nav-blog-link" data-key="nav_blog">Blog</a></li> -->
                 </ul>
             </nav>
+
+            <button class="lang-toggle-btn" id="langToggleBtn" aria-label="Toggle language to English">ES / EN</button>
+
         </div>
     </header>
 
@@ -155,6 +156,16 @@
                         <a href="https://secret-game-theta.vercel.app/" target="_blank" rel="noopener" class="card-link">Ver Demo <i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
+
+                <div class="project-card grid-item web" data-category="web">
+                    <div class="card-tag tag-web" data-key="tag_web_responsive">Web Responsive</div>
+                    <h3>Sansu Journal</h3>
+                    <p class="project-summary" data-key="sansu_journal_summary">Blog interactivo creado con TypeScript con funcionalidades avanzadas: reproducción de audios con transcripciones, visualización de videos y visualización de PDF. Diseño profesional, responsive y centrado en la experiencia del usuario.</p>
+                    <div class="card-footer">
+                        <span class="tech-stack">TypeScript | HTML | CSS</span>
+                        <a href="https://sansu-journal.vercel.app/#/" target="_blank" rel="noopener noreferrer" class="card-link">Ver Demo <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -181,6 +192,7 @@
                 <div class="skill-card bento-item item-vertical reveal">
                     <h3 data-key="skill_dev_title">Core <span class="accent-color-dev">Web Dev</span></h3>
                     <div class="skill-list-bento">
+                        <span class="skill-tag tag-dev">TypeScript</span>
                         <span class="skill-tag tag-dev">JavaScript</span>
                         <span class="skill-tag tag-dev">Django (Python)</span>
                         <span class="skill-tag tag-dev">HTML5/CSS3</span>
@@ -218,7 +230,7 @@
             <div class="footer-info">
                 <h3 class="footer-logo-text">Santiago Suarez</h3>
                 <p data-key="footer_role">Software Developer & Data Analyst</p>
-                <p data-key="footer_copyright">&copy; 2025 Sansu Inc. Todos los derechos reservados.</p>
+                <p data-key="footer_copyright">&copy; 2026 Sansu Inc. Todos los derechos reservados.</p>
             </div>
             
             <div class="footer-social">
