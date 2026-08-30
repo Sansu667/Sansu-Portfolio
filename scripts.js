@@ -279,22 +279,26 @@ const blogPosts = [
 
 const translations = {
     'es': {
-        'title': 'Santiago Suarez | Análisis y Desarrollo',
+        'title': 'Santiago Suarez | Desarrollo, Datos & Video',
         'hero_intro': 'Hola, soy Santiago Suarez.',
-        'hero_title_p1': 'LA DUALIDAD DE UN',
+        'hero_title_p1': 'LAS TRES FACETAS DE UN',
         'hero_title_dev': 'FULL-STACK DEV',
         'hero_title_data': 'DATA ANALYST',
-        'hero_caption': 'Mi enfoque: Estadística rigurosa en software moderno.',
+        'hero_title_media': 'EDITOR AUDIOVISUAL',
+        'hero_caption': 'Filosofía, datos y narrativa audiovisual en un solo perfil.',
         'btn_web': 'DESARROLLO WEB',
         'btn_data': 'DATA & ANÁLISIS',
+        'btn_media': 'EDICIÓN DE VIDEO',
         // Navegación
         'nav_home': 'Inicio',
         'nav_about': 'Acerca',
+        'nav_videos': 'Audiovisual',
         'nav_projects': 'Proyectos',
         'nav_skills': 'Habilidades',
         'nav_contact': 'Contacto',
         'nav_blog': 'Blog',
         'nav_about_f': 'Acerca',
+        'nav_videos_f': 'Audiovisual',
         'nav_projects_f': 'Proyectos',
         'nav_blog_f': 'Blog Personal',
         // Sección About
@@ -309,6 +313,13 @@ const translations = {
         'detail_idiomas_text': 'Trilingüe: Español (nativo), Inglés (fluido) e Italiano (intermedio).',
         'detail_ubicacion_title': 'Ubicación',
         'detail_ubicacion_text': 'Colombia (Disponible para trabajo remoto global).',
+        'detail_media_title': 'Enfoque Actual',
+        'detail_media_text': 'Freelance en edición y postproducción de video, apoyo a páginas web y creación de contenido para redes sociales.',
+        // Sección Videos
+        'videos_title': 'Portafolio Audiovisual',
+        'videos_subtitle': 'Cortometrajes con edición, montaje, color y sonido a mi cargo. Haz clic en cualquier pieza para reproducirla.',
+        'videos_note': '¿Prefieres verlos en tu propio reproductor? También puedes abrir cada pieza directamente en Google Drive.',
+        'tag_short_film': 'Cortometraje',
         // Sección Proyectos
         'projects_title': 'Proyectos Destacados',
         'projects_subtitle': 'Explora mi trabajo filtrado por áreas de especialización.',
@@ -335,13 +346,19 @@ const translations = {
         'skill_tag_critico': 'Pensamiento Crítico',
         'skill_tag_trilingue': 'Trilingüe (ES/EN/IT)',
         'skill_tag_investigacion': 'Investigación',
+        'skill_media_title': 'Medios & Comunicación',
+        'skill_tag_video_edit': 'Edición de Video',
+        'skill_tag_podcast': 'Producción de Podcasts',
+        'skill_tag_social': 'Manejo de Redes Sociales',
+        'skill_tag_graphics': 'Piezas Gráficas',
+        'skill_tag_web_maint': 'Mantenimiento Web',
         // Sección Contacto
         'contact_title': '¿Listo para el Próximo Desafío?',
         'contact_subtitle': 'Si buscas una mente que combine precisión estadística y ejecución de software, envíame un mensaje.',
         'contact_btn': 'Enviar Correo',
         'contact_small_text': 'o conéctate conmigo en LinkedIn y GitHub.',
         // Footer
-        'footer_role': 'Software Developer & Data Analyst',
+        'footer_role': 'Software Developer, Data Analyst & Editor Audiovisual',
         'footer_copyright': '© 2026 Sansu Inc. Todos los derechos reservados.',
         'footer_connect': 'Conecta',
         'footer_explore': 'Explorar',
@@ -371,22 +388,26 @@ const translations = {
         'notification_copied': 'Enlace copiado al portapapeles.',
     },
     'en': {
-        'title': 'Santiago Suarez | Analysis & Development',
+        'title': 'Santiago Suarez | Development, Data & Video',
         'hero_intro': 'Hello, I\'m Santiago Suarez.',
-        'hero_title_p1': 'THE DUALITY OF A',
+        'hero_title_p1': 'THE THREE FACETS OF A',
         'hero_title_dev': 'FULL-STACK DEV',
         'hero_title_data': 'DATA ANALYST',
-        'hero_caption': 'My approach: Rigorous statistics in modern software.',
+        'hero_title_media': 'VIDEO EDITOR',
+        'hero_caption': 'Philosophy, data, and audiovisual storytelling in one profile.',
         'btn_web': 'WEB DEVELOPMENT',
         'btn_data': 'DATA & ANALYTICS',
+        'btn_media': 'VIDEO EDITING',
         // Navigation
         'nav_home': 'Home',
         'nav_about': 'About',
+        'nav_videos': 'Video',
         'nav_projects': 'Projects',
         'nav_skills': 'Skills',
         'nav_contact': 'Contact',
         'nav_blog': 'Blog',
         'nav_about_f': 'About',
+        'nav_videos_f': 'Video',
         'nav_projects_f': 'Projects',
         'nav_blog_f': 'Personal Blog',
         // Sección About
@@ -401,6 +422,13 @@ const translations = {
         'detail_idiomas_text': 'Trilingual: Spanish (native), English (fluent), and Italian (intermediate).',
         'detail_ubicacion_title': 'Location',
         'detail_ubicacion_text': 'Colombia (Available for global remote work).',
+        'detail_media_title': 'Current Focus',
+        'detail_media_text': 'Freelancing in video editing and post-production, web page maintenance, and content creation for social media.',
+        // Sección Videos
+        'videos_title': 'Video <span class="highlight-color">Portfolio</span>',
+        'videos_subtitle': 'Short films with editing, assembly, color, and sound under my direction. Click any piece to play it.',
+        'videos_note': 'Prefer your own player? You can also open each piece directly on Google Drive.',
+        'tag_short_film': 'Short Film',
         // Sección Proyectos
         'projects_title': 'Featured <span class="highlight-color">Projects</span>',
         'projects_subtitle': 'Explore my work filtered by areas of expertise.',
@@ -427,13 +455,19 @@ const translations = {
         'skill_tag_critico': 'Critical Thinking',
         'skill_tag_trilingue': 'Trilingual (ES/EN/IT)',
         'skill_tag_investigacion': 'Research',
+        'skill_media_title': 'Media & Communication',
+        'skill_tag_video_edit': 'Video Editing',
+        'skill_tag_podcast': 'Podcast Production',
+        'skill_tag_social': 'Social Media Management',
+        'skill_tag_graphics': 'Graphic Pieces',
+        'skill_tag_web_maint': 'Web Maintenance',
         // Sección Contacto
         'contact_title': 'Ready for the <span class="highlight-color">Next Challenge</span>?',
         'contact_subtitle': 'If you are looking for a mind that combines statistical precision and software execution, send me a message.',
         'contact_btn': 'Send Email',
         'contact_small_text': 'or connect with me on LinkedIn and GitHub.',
         // Footer
-        'footer_role': 'Software Developer & Data Analyst',
+        'footer_role': 'Software Developer, Data Analyst & Video Editor',
         'footer_copyright': '© 2026 Sansu Inc. All rights reserved.',
         'footer_connect': 'Connect',
         'footer_explore': 'Explore',
@@ -1056,6 +1090,28 @@ function initDarkMode() {
 // 8. OTRAS FUNCIONES DEL PORTAFOLIO (Placeholders)
 // ========================================
 
+function initVideoPortfolio() {
+    const videoCards = document.querySelectorAll('.video-card');
+    if (!videoCards.length) return;
+
+    videoCards.forEach(card => {
+        const playBtn = card.querySelector('.video-play-btn');
+        const thumb = card.querySelector('.video-thumb');
+        const videoId = card.dataset.videoId;
+        if (!playBtn || !thumb || !videoId) return;
+
+        playBtn.addEventListener('click', () => {
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://drive.google.com/file/d/${videoId}/preview`;
+            iframe.setAttribute('allow', 'autoplay');
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.setAttribute('loading', 'lazy');
+            thumb.innerHTML = '';
+            thumb.appendChild(iframe);
+        }, { once: true });
+    });
+}
+
 function initHeroInteraction() {
      // Lógica para mostrar/ocultar .floating-profile si existe
      const choiceBtns = document.querySelectorAll('.choice-btn');
@@ -1084,6 +1140,7 @@ function initApp() {
     if (document.querySelector('.hero-attention')) {
         initHeroInteraction();
         initProjectFilters(); // Filtros de proyectos del portafolio
+        initVideoPortfolio(); // Portafolio audiovisual (reproducción bajo demanda)
         // initSkillsProgress(); // Si tienes barras de progreso en Skills
     }
 

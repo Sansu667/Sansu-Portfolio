@@ -8,6 +8,7 @@
     --primary-dark: #d06e54;
     --accent-color-dev: #4A90E2; /* Azul - Acento Web Dev */
     --accent-color-stat: #E6D24D; /* Amarillo Suave - Acento Data */
+    --accent-color-media: #2EC4B6; /* Verde azulado - Acento Video/Audiovisual */
     --bg-color: #121212; /* Fondo muy oscuro */
     --secondary-bg: #1e1e1e; /* Fondo de tarjetas/contenedores */
     --text-color: #F8F8F8;
@@ -355,6 +356,11 @@ img {
     color: var(--bg-color);
 }
 
+.line-media {
+    background-color: var(--accent-color-media);
+    color: var(--bg-color);
+}
+
 .choice-container {
     display: flex;
     justify-content: center;
@@ -391,6 +397,16 @@ img {
 .choice-stat:hover {
     transform: translateY(-5px) scale(1.03);
     box-shadow: 0 10px 25px rgba(230, 210, 77, 0.5);
+}
+
+.choice-media {
+    background-color: var(--accent-color-media);
+    color: var(--bg-color);
+}
+
+.choice-media:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 25px rgba(46, 196, 182, 0.5);
 }
 
 /* FOTO FLOTANTE */
@@ -597,6 +613,11 @@ section {
     color: var(--accent-color-stat);
     border: 1px solid rgba(230, 210, 77, 0.3);
 }
+.tag-video {
+    background-color: rgba(46, 196, 182, 0.15);
+    color: var(--accent-color-media);
+    border: 1px solid rgba(46, 196, 182, 0.3);
+}
 
 .project-card h3 {
     font-size: 1.3rem; /* Ligeramente más pequeño */
@@ -631,6 +652,91 @@ section {
 }
 .card-link i {
     margin-left: 0.5rem;
+}
+
+/* ================================================= */
+/* 6.5. VIDEOS SECTION (PORTAFOLIO AUDIOVISUAL)      */
+/* ================================================= */
+
+.videos {
+    background-color: var(--secondary-bg);
+}
+
+.videos-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.video-card {
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color-media);
+    box-shadow: 0 0 25px rgba(46, 196, 182, 0.15);
+}
+
+.video-thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-thumb iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.video-play-btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: rgba(46, 196, 182, 0.15);
+    border: 2px solid var(--accent-color-media);
+    color: var(--accent-color-media);
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.video-play-btn i {
+    margin-left: 4px; /* Centrar visualmente el ícono de play */
+}
+
+.video-card:hover .video-play-btn {
+    background-color: var(--accent-color-media);
+    color: var(--bg-color);
+    transform: scale(1.1);
+}
+
+.video-card-body {
+    padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+}
+
+.video-card-body h3 {
+    font-size: 1.15rem;
+    color: var(--text-color);
+}
+
+.video-note {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: var(--spacing-md);
 }
 
 /* ================================================= */
@@ -706,9 +812,19 @@ section {
     border-color: rgba(230, 131, 105, 0.3);
 }
 .skills-grid .skill-tag.tag-soft {
-     background-color: rgba(150, 50, 150, 0.15); 
-    color: #c568c5; 
+     background-color: rgba(150, 50, 150, 0.15);
+    color: #c568c5;
     border-color: rgba(150, 50, 150, 0.3);
+}
+.skills-grid .skill-tag.tag-media {
+    background-color: rgba(46, 196, 182, 0.15);
+    color: var(--accent-color-media);
+    border-color: rgba(46, 196, 182, 0.3);
+}
+
+.skills-grid .item-media {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #1e1e1e 0%, #2a2a2a 100%);
 }
 
 /* ================================================= */

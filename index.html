@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-key="title">Santiago Suarez | Análisis y Desarrollo</title>
+    <title data-key="title">Santiago Suarez | Desarrollo, Datos & Video</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,7 @@
                 <ul>
                     <li><a href="#home" class="active" data-key="nav_home">Inicio</a></li>
                     <li><a href="#about" data-key="nav_about">Acerca</a></li>
+                    <li><a href="#videos" data-key="nav_videos">Audiovisual</a></li>
                     <li><a href="#projects" data-key="nav_projects">Proyectos</a></li>
                     <li><a href="#skills" data-key="nav_skills">Habilidades</a></li>
                     <li><a href="#contact" data-key="nav_contact">Contacto</a></li>
@@ -39,9 +40,10 @@
         <div class="container hero-content-wrapper">
             <p class="hero-intro-text" data-key="hero_intro">Hola, soy Santiago Suarez.</p>
             <h1 class="hero-title">
-                <span data-key="hero_title_p1">LA DUALIDAD DE UN</span>
+                <span data-key="hero_title_p1">LAS TRES FACETAS DE UN</span>
                 <span class="highlight-line line-dev" data-key="hero_title_dev">FULL-STACK DEV</span>
                 <span class="highlight-line line-stat" data-key="hero_title_data">DATA ANALYST</span>
+                <span class="highlight-line line-media" data-key="hero_title_media">EDITOR AUDIOVISUAL</span>
             </h1>
 
             <div class="choice-container">
@@ -51,6 +53,9 @@
                 <a href="#projects" class="choice-btn choice-stat" data-focus="stat" data-key="btn_data">
                     <i class="fas fa-chart-line"></i> DATA & ANÁLISIS
                 </a>
+                <a href="#videos" class="choice-btn choice-media" data-focus="media" data-key="btn_media">
+                    <i class="fas fa-film"></i> EDICIÓN DE VIDEO
+                </a>
             </div>
         </div>
 
@@ -58,7 +63,7 @@
             <div class="image-container">
                 <img src="img/perfil_img.jpeg" alt="Santiago Suarez" class="profile-image">
             </div>
-            <p class="floating-caption" data-key="hero_caption">Mi enfoque: Estadística rigurosa en software moderno.</p>
+            <p class="floating-caption" data-key="hero_caption">Filosofía, datos y narrativa audiovisual en un solo perfil.</p>
         </div>
     </section>
 
@@ -66,8 +71,8 @@
         <div class="container about-grid">
             <div class="about-text-box reveal">
                 <h2 class="section-title" data-key="about_title">Acerca de <span class="highlight-color">Mí</span></h2>
-                <p class="lead-paragraph" data-key="about_lead">Soy Santiago Suarez, un profesional con una curiosa dualidad de enfoque: Desarrollo de Software robusto y Análisis Estadístico profundo. Mi objetivo es construir soluciones elegantes que no solo funcionen, sino que también aporten valor basado en datos.</p>
-                <p data-key="about_body_p1">Mi formación en Filosofía me dota de un pensamiento crítico y lógico, complementando perfectamente mi habilidad para el código (HTML, CSS, JavaScript, Django) y la ciencia de datos (Python, R, Power BI). Como freelance, he gestionado proyectos desde el front-end hasta la lógica de back-end y la implementación de soluciones de datos.</p>
+                <p class="lead-paragraph" data-key="about_lead">Soy Santiago Suarez, un profesional con una curiosa triple faceta: Desarrollo de Software robusto, Análisis Estadístico profundo y Edición Audiovisual. Mi objetivo es construir soluciones y narrativas elegantes que no solo funcionen, sino que también comuniquen con impacto.</p>
+                <p data-key="about_body_p1">Mi formación en Filosofía me dota de un pensamiento crítico y lógico, complementando perfectamente mi habilidad para el código (HTML, CSS, JavaScript, Django), la ciencia de datos (Python, R, Power BI) y la edición de video. Como freelance, he gestionado proyectos desde el front-end hasta la lógica de back-end, la implementación de soluciones de datos y el montaje, color y sonido de piezas audiovisuales.</p>
                 <div class="about-cta-links">
                     <a href="#contact" class="btn btn-primary" data-key="about_btn_contact">Empecemos a trabajar</a>
                     <a href="https://github.com/Sansu667" target="_blank" rel="noopener" class="btn btn-secondary" data-key="about_btn_github">GitHub Profile <i class="fab fa-github"></i></a>
@@ -89,7 +94,94 @@
                     <h4 data-key="detail_ubicacion_title">Ubicación</h4>
                     <p data-key="detail_ubicacion_text">Colombia (Disponible para trabajo remoto global).</p>
                 </div>
+                <div class="detail-group">
+                    <i class="fas fa-video"></i>
+                    <h4 data-key="detail_media_title">Enfoque Actual</h4>
+                    <p data-key="detail_media_text">Freelance en edición y postproducción de video, apoyo a páginas web y creación de contenido para redes sociales.</p>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <section id="videos" class="videos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-key="videos_title">Portafolio <span class="highlight-color">Audiovisual</span></h2>
+                <p class="subtitle-text text-center" data-key="videos_subtitle">Cortometrajes con edición, montaje, color y sonido a mi cargo. Haz clic en cualquier pieza para reproducirla.</p>
+            </div>
+
+            <div class="videos-grid bento-grid-modern">
+                <div class="video-card" data-video-id="13xLQc1G8IBP_B_ERz6U_JscR3VzkBZLf">
+                    <div class="video-thumb">
+                        <button class="video-play-btn" aria-label="Reproducir Casquirrís"><i class="fas fa-play"></i></button>
+                    </div>
+                    <div class="video-card-body">
+                        <div class="card-tag tag-video" data-key="tag_short_film">Cortometraje</div>
+                        <h3>Casquirrís</h3>
+                    </div>
+                </div>
+
+                <div class="video-card" data-video-id="1_AI4bJI7SIxljqO6RvnJadan1jO2baLr">
+                    <div class="video-thumb">
+                        <button class="video-play-btn" aria-label="Reproducir X-Tiles"><i class="fas fa-play"></i></button>
+                    </div>
+                    <div class="video-card-body">
+                        <div class="card-tag tag-video" data-key="tag_short_film">Cortometraje</div>
+                        <h3>X-Tiles</h3>
+                    </div>
+                </div>
+
+                <div class="video-card" data-video-id="1DUewGfoKxdfuIQruZr01iewV9S1teiS_">
+                    <div class="video-thumb">
+                        <button class="video-play-btn" aria-label="Reproducir Desparchados"><i class="fas fa-play"></i></button>
+                    </div>
+                    <div class="video-card-body">
+                        <div class="card-tag tag-video" data-key="tag_short_film">Cortometraje</div>
+                        <h3>Desparchados</h3>
+                    </div>
+                </div>
+
+                <div class="video-card" data-video-id="1vjH8r7ebfcWnBInGmVSZZo1Oy3F5Jn3u">
+                    <div class="video-thumb">
+                        <button class="video-play-btn" aria-label="Reproducir Amapolas"><i class="fas fa-play"></i></button>
+                    </div>
+                    <div class="video-card-body">
+                        <div class="card-tag tag-video" data-key="tag_short_film">Cortometraje</div>
+                        <h3>Amapolas</h3>
+                    </div>
+                </div>
+
+                <div class="video-card" data-video-id="1opYz4O5Y5ZGa5AmmPSueU35AhX5h5KQP">
+                    <div class="video-thumb">
+                        <button class="video-play-btn" aria-label="Reproducir The Brothers"><i class="fas fa-play"></i></button>
+                    </div>
+                    <div class="video-card-body">
+                        <div class="card-tag tag-video" data-key="tag_short_film">Cortometraje</div>
+                        <h3>The Brothers</h3>
+                    </div>
+                </div>
+
+                <div class="video-card" data-video-id="1vO_SKirooeu6YObYM8a0wz3uDuBuhfyd">
+                    <div class="video-thumb">
+                        <button class="video-play-btn" aria-label="Reproducir Catarsis"><i class="fas fa-play"></i></button>
+                    </div>
+                    <div class="video-card-body">
+                        <div class="card-tag tag-video" data-key="tag_short_film">Cortometraje</div>
+                        <h3>Catarsis</h3>
+                    </div>
+                </div>
+
+                <div class="video-card" data-video-id="16PvA5eFzJlWi1B54nedEdCOZjdeVgsfu">
+                    <div class="video-thumb">
+                        <button class="video-play-btn" aria-label="Reproducir Socialistas Rotos"><i class="fas fa-play"></i></button>
+                    </div>
+                    <div class="video-card-body">
+                        <div class="card-tag tag-video" data-key="tag_short_film">Cortometraje</div>
+                        <h3>Socialistas Rotos</h3>
+                    </div>
+                </div>
+            </div>
+            <p class="video-note" data-key="videos_note">¿Prefieres verlos en tu propio reproductor? También puedes abrir cada pieza directamente en Google Drive.</p>
         </div>
     </section>
 
@@ -210,6 +302,17 @@
                         <span class="skill-tag tag-soft" data-key="skill_tag_investigacion">Investigación</span>
                     </div>
                 </div>
+
+                <div class="skill-card bento-item item-media reveal">
+                    <h3 data-key="skill_media_title">Medios & <span class="highlight-color">Comunicación</span></h3>
+                    <div class="skill-list-bento">
+                        <span class="skill-tag tag-media" data-key="skill_tag_video_edit">Edición de Video</span>
+                        <span class="skill-tag tag-media" data-key="skill_tag_podcast">Producción de Podcasts</span>
+                        <span class="skill-tag tag-media" data-key="skill_tag_social">Manejo de Redes Sociales</span>
+                        <span class="skill-tag tag-media" data-key="skill_tag_graphics">Piezas Gráficas</span>
+                        <span class="skill-tag tag-media" data-key="skill_tag_web_maint">Mantenimiento Web</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -229,7 +332,7 @@
         <div class="container footer-content-grid">
             <div class="footer-info">
                 <h3 class="footer-logo-text">Santiago Suarez</h3>
-                <p data-key="footer_role">Software Developer & Data Analyst</p>
+                <p data-key="footer_role">Software Developer, Data Analyst & Editor Audiovisual</p>
                 <p data-key="footer_copyright">&copy; 2026 Sansu Inc. Todos los derechos reservados.</p>
             </div>
             
@@ -246,6 +349,7 @@
                  <h4 data-key="footer_explore">Explorar</h4>
                  <ul>
                     <li><a href="#about" data-key="nav_about_f">Acerca</a></li>
+                    <li><a href="#videos" data-key="nav_videos_f">Audiovisual</a></li>
                     <li><a href="#projects" data-key="nav_projects_f">Proyectos</a></li>
                     <li><a href="./blog.html" data-key="nav_blog_f">Blog Personal</a></li>
                 </ul>
